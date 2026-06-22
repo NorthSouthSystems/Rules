@@ -5,7 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageVersion Include="ClosedXML" Version="0.105.0"/>
+        <PackageVersion Include="morelinq" Version="4.4.0"/>
         <PackageVersion Include="Nerdbank.MessagePack" Version="1.2.30"/>
-        <PackageVersion Include="System.IO.Hashing" Version="10.0.9"/>
+        <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.0.1"/>
+        <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
+        <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.2"/>
+        <PackageVersion Include="Verify.XunitV3" Version="31.20.0"/>
     </ItemGroup>
 </Project>
