@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 internal static class AxisMapTemplateWriter
 {

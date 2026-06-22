@@ -2,7 +2,7 @@
 using System.Linq.Dynamic.Core;
 using System.Linq.Dynamic.Core.Exceptions;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 public class DynamicExpressionCache
 {

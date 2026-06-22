@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO.Hashing;
 using System.Numerics;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 internal static class BoundNumericOperatorExtensions
 {

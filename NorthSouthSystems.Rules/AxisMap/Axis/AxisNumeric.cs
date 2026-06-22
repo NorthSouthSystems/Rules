@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO.Hashing;
 using System.Numerics;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 // SEE COMMENTS ABOVE AXIS BASE CLASS!
 

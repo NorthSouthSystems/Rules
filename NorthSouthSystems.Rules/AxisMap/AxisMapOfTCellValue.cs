@@ -3,7 +3,7 @@ using Nerdbank.MessagePack;
 using NorthSouthSystems.Buffers.Binary;
 using PolyType;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 // SEE COMMENTS ABOVE AXISMAP BASE CLASS!
 

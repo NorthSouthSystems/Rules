@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 
-namespace Nss.Rules.Excel;
+namespace NorthSouthSystems.Rules.Excel;
 
 public static class AxisMapXlsxX
 {

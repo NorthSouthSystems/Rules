@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 internal sealed partial class AxisMapTableKeystone
 {

@@ -1,7 +1,7 @@
 ﻿using ClosedXML.Excel;
 using System.IO;
 
-namespace Nss.Rules.Excel;
+namespace NorthSouthSystems.Rules.Excel;
 
 internal class AxisMapXlsxTable : IAxisMapTable
 {

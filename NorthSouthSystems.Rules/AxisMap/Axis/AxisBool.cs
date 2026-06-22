@@ -5,7 +5,7 @@ using NorthSouthSystems.Reflection;
 using PolyType;
 using System.IO.Hashing;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 // SEE COMMENTS ABOVE AXIS BASE CLASS!
 

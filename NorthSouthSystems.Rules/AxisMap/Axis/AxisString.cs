@@ -6,7 +6,7 @@ using PolyType;
 using System.IO.Hashing;
 using System.Text.RegularExpressions;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 // SEE COMMENTS ABOVE AXIS BASE CLASS!
 

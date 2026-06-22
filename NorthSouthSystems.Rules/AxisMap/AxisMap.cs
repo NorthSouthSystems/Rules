@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.IO.Hashing;
 using System.Reflection;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 public enum AxisMapLookupCellValueStatus
 {

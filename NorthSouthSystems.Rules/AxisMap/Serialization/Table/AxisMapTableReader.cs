@@ -1,6 +1,6 @@
 ﻿using MoreLinq;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 internal static class AxisMapTableReader
 {

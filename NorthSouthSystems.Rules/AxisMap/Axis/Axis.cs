@@ -4,7 +4,7 @@ using NorthSouthSystems.MessagePackable;
 using PolyType;
 using System.IO.Hashing;
 
-namespace Nss.Rules;
+namespace NorthSouthSystems.Rules;
 
 // AxisNumeric<double> is explicitly NOT supported due to the challenges involved with floating
 // point equality and comparison - those challenges are not worth the space savings (and potentially

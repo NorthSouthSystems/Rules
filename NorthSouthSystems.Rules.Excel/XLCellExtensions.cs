@@ -1,6 +1,6 @@
 ﻿using ClosedXML.Excel;
 
-namespace Nss.Rules.Excel;
+namespace NorthSouthSystems.Rules.Excel;
 
 internal static class XLCellExtensions
 {

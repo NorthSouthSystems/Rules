@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Nss.Rules.Excel;
+namespace NorthSouthSystems.Rules.Excel;
 
 internal static class ExcelRounding
 {

@@ -1,4 +1,4 @@
-﻿namespace Nss.Rules;
+﻿namespace NorthSouthSystems.Rules;
 
 internal interface IAxisMapTable
 {
