@@ -1,7 +1,5 @@
 ﻿using MoreLinq;
 using Nerdbank.MessagePack;
-using NorthSouthSystems.IO.Hashing;
-using NorthSouthSystems.Reflection;
 using PolyType;
 using System.IO.Hashing;
 using System.Text.RegularExpressions;

@@ -28,7 +28,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisBool"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisBool"
             }
           ]
         },
@@ -44,7 +44,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
             }
           ]
         },
@@ -60,7 +60,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
             }
           ]
         },
@@ -76,7 +76,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
             }
           ]
         },
@@ -92,7 +92,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
             }
           ]
         },
@@ -108,7 +108,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/Nss.Rules.AxisString"
+              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisString"
             }
           ]
         }
@@ -119,7 +119,7 @@
     }
   ],
   "definitions": {
-    "Nss.Rules.AxisBool": {
+    "NorthSouthSystems.Rules.AxisBool": {
       "type": [
         "object",
         "array"
@@ -180,7 +180,7 @@
       ],
       "minItems": 5
     },
-    "Nss.Rules.BoundNumericOperator": {
+    "NorthSouthSystems.Rules.BoundNumericOperator": {
       "type": "integer",
       "enum": [
         0,
@@ -191,14 +191,14 @@
       ],
       "description": "0 = EqualTo, 1 = GreaterThan, 2 = GreaterThanOrEqualTo, 3 = LessThan, 4 = LessThanOrEqualTo"
     },
-    "Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -208,7 +208,7 @@
       },
       "items": [
         {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -222,13 +222,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
       }
     },
-    "Nss.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
@@ -247,7 +247,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         "6": {
@@ -293,7 +293,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         {
@@ -310,14 +310,14 @@
       ],
       "minItems": 7
     },
-    "Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -327,7 +327,7 @@
       },
       "items": [
         {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -341,13 +341,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
       }
     },
-    "Nss.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
@@ -366,7 +366,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         "6": {
@@ -412,7 +412,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         {
@@ -429,14 +429,14 @@
       ],
       "minItems": 7
     },
-    "Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -446,7 +446,7 @@
       },
       "items": [
         {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -460,13 +460,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
       }
     },
-    "Nss.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
@@ -485,7 +485,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         "6": {
@@ -531,7 +531,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         {
@@ -552,14 +552,14 @@
       "type": "string",
       "pattern": "^msgpack extension 4 as base64: "
     },
-    "Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -569,7 +569,7 @@
       },
       "items": [
         {
-          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -583,13 +583,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
       }
     },
-    "Nss.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
       "type": [
         "object",
         "array"
@@ -608,7 +608,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         "6": {
@@ -654,7 +654,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
           "description": "BoundNumerics"
         },
         {
@@ -677,7 +677,7 @@
         "type": "string"
       }
     },
-    "Nss.Rules.AxisString": {
+    "NorthSouthSystems.Rules.AxisString": {
       "type": [
         "object",
         "array"

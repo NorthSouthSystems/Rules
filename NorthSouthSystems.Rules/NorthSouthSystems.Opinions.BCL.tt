@@ -1,0 +1,83 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".generated.cs" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Net"#>
+// T4-generated @ <#= DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss 'UTC'") #>
+<#
+// T4 templates (best guess) run using a .NET Framework or Mono version that defaults to < TLS 1.2 which GitHub rejects.
+ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
+
+const string sourceBaseUrl =
+    $"https://raw.githubusercontent.com/NorthSouthSystems/Opinions/refs/heads/main/NorthSouthSystems.Opinions.BCL/";
+
+string[] sourceFilePaths =
+[
+    "ArgumentExceptionX.cs",
+    "ObjectX.cs",
+    "RandomX.cs",
+    "Throw.cs",
+    "TypeX.cs",
+    "Buffers/Binary/BinaryRoundTrip.cs",
+    "IO/PathX.cs",
+    "IO/Hashing/XxHash128X.cs",
+    "Linq/ReverseNoBuffer.cs",
+    "Reflection/PropertyInfoX.cs"
+];
+
+IReadOnlyList<string> sources;
+
+using (var client = new WebClient())
+{
+    sources =  sourceFilePaths
+        .Select(sfp => sourceBaseUrl + sfp)
+        .Select(client.DownloadString)
+        .ToArray();
+}
+
+IReadOnlyList<string> lines = sources
+    .SelectMany(s => s.Split(["\r\n"], StringSplitOptions.None))
+    .SelectMany(s => s.Split('\r', '\n'))
+    .ToArray();
+
+IReadOnlyList<string> usings = lines
+    .Select(l => l.Trim())
+    .Where(l => l.StartsWith("using ") && !l.StartsWith("using NorthSouthSystems"))
+    .Append("using System.Diagnostics.CodeAnalysis;")
+    .Distinct()
+    .OrderBy(l => l)
+    .ToArray();
+
+WriteLine("#nullable enable");
+WriteLine(string.Empty);
+
+foreach (string @using in usings)
+    WriteLine(@using);
+
+WriteLine(string.Empty);
+WriteLine("namespace NorthSouthSystems.Rules;");
+WriteLine(string.Empty);
+
+bool wasWhiteSpace = true;
+
+foreach (string line in lines)
+{
+    if (line.Trim().StartsWith("using ") || line.Trim().StartsWith("namespace "))
+        continue;
+
+    bool isWhiteSpace = string.IsNullOrWhiteSpace(line);
+
+    if (wasWhiteSpace && isWhiteSpace)
+        continue;
+
+    wasWhiteSpace = isWhiteSpace;
+
+    if (line.Contains(" class ") || line.Contains(" record ") || line.Contains(" struct "))
+    {
+        WriteLine("[ExcludeFromCodeCoverage]");
+        WriteLine(line.Replace("public ", "internal "));
+    }
+    else
+        WriteLine(line);
+}
+#>

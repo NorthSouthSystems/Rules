@@ -1,14 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+    <PropertyGroup>
+        <!-- TODO: CS1573 - Fully document all params for documented methods. -->
+        <!-- TODO: CS1591 - Fully document all publicly visible members. -->
+        <NoWarn>CS1573,CS1591</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="morelinq"/>
         <PackageReference Include="Nerdbank.MessagePack"/>
         <PackageReference Include="NorthSouthSystems.MessagePackable"/>
+        <PackageReference Include="NorthSouthSystems.Text"/>
         <PackageReference Include="System.Linq.Dynamic.Core"/>
     </ItemGroup>
 
     <ItemGroup>
         <InternalsVisibleTo Include="NorthSouthSystems.Rules.Excel"/>
+    </ItemGroup>
+
+    <!-- T4  -->
+    <ItemGroup>
+        <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="NorthSouthSystems.Opinions.BCL.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>NorthSouthSystems.Opinions.BCL.generated.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="NorthSouthSystems.Opinions.BCL.generated.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>NorthSouthSystems.Opinions.BCL.tt</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>

@@ -40,6 +40,12 @@
           "System.IO.Hashing": "10.0.9"
         }
       },
+      "NorthSouthSystems.Text": {
+        "type": "Direct",
+        "requested": "[8.0.1, )",
+        "resolved": "8.0.1",
+        "contentHash": "oPOkCLiQ14gge7yMyleRdvQFCRBSSwFGXuDyWd3FqoyLmRhn3I3rLBPnPLpy4Tpg+fsTJC0VCEPPOjxV4ZbpZQ=="
+      },
       "System.Linq.Dynamic.Core": {
         "type": "Direct",
         "requested": "[1.7.2, )",

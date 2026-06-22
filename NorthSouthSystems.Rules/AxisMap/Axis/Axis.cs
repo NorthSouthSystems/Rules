@@ -1,5 +1,4 @@
 ﻿using Nerdbank.MessagePack;
-using NorthSouthSystems.IO.Hashing;
 using NorthSouthSystems.MessagePackable;
 using PolyType;
 using System.IO.Hashing;

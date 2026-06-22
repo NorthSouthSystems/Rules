@@ -1,5 +1,4 @@
 ﻿using Nerdbank.MessagePack;
-using NorthSouthSystems.Reflection;
 using PolyType;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;

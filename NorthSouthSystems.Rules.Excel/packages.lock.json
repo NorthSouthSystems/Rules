@@ -88,6 +88,7 @@
         "dependencies": {
           "Nerdbank.MessagePack": "[1.2.30, )",
           "NorthSouthSystems.MessagePackable": "[1.0.1, )",
+          "NorthSouthSystems.Text": "[8.0.1, )",
           "System.Linq.Dynamic.Core": "[1.7.2, )",
           "morelinq": "[4.4.0, )"
         }
@@ -117,6 +118,12 @@
           "Nerdbank.MessagePack": "1.2.30",
           "System.IO.Hashing": "10.0.9"
         }
+      },
+      "NorthSouthSystems.Text": {
+        "type": "CentralTransitive",
+        "requested": "[8.0.1, )",
+        "resolved": "8.0.1",
+        "contentHash": "oPOkCLiQ14gge7yMyleRdvQFCRBSSwFGXuDyWd3FqoyLmRhn3I3rLBPnPLpy4Tpg+fsTJC0VCEPPOjxV4ZbpZQ=="
       },
       "System.Linq.Dynamic.Core": {
         "type": "CentralTransitive",

@@ -1,5 +1,4 @@
-﻿using NorthSouthSystems.IO;
-using System.IO;
+﻿using System.IO;
 
 public class T_AxisMapXlsxTable
 {
