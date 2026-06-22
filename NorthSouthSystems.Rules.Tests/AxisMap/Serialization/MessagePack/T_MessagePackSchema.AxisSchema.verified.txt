@@ -1,0 +1,779 @@
+﻿{
+  "oneOf": [
+    {
+      "oneOf": [
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {}
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                1
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisBool"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                2
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                3
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                4
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                5
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": [
+            {
+              "type": "integer",
+              "enum": [
+                6
+              ]
+            },
+            {
+              "$ref": "#/definitions/Nss.Rules.AxisString"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "null"
+    }
+  ],
+  "definitions": {
+    "Nss.Rules.AxisBool": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "4": {
+          "type": "boolean",
+          "description": "BoundBoolIndex0"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": "boolean",
+          "description": "BoundBoolIndex0"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "minItems": 5
+    },
+    "Nss.Rules.BoundNumericOperator": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "description": "0 = EqualTo, 1 = GreaterThan, 2 = GreaterThanOrEqualTo, 3 = LessThan, 4 = LessThanOrEqualTo"
+    },
+    "Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        "1": {
+          "type": "integer",
+          "description": "Value"
+        }
+      },
+      "items": [
+        {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        {
+          "type": "integer",
+          "description": "Value"
+        }
+      ],
+      "required": [
+        "0",
+        "1"
+      ],
+      "minItems": 2
+    },
+    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+      }
+    },
+    "Nss.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "5": {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        "6": {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "minItems": 7
+    },
+    "Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        "1": {
+          "type": "integer",
+          "description": "Value"
+        }
+      },
+      "items": [
+        {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        {
+          "type": "integer",
+          "description": "Value"
+        }
+      ],
+      "required": [
+        "0",
+        "1"
+      ],
+      "minItems": 2
+    },
+    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+      }
+    },
+    "Nss.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "5": {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        "6": {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "minItems": 7
+    },
+    "Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        "1": {
+          "type": "integer",
+          "description": "Value"
+        }
+      },
+      "items": [
+        {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        {
+          "type": "integer",
+          "description": "Value"
+        }
+      ],
+      "required": [
+        "0",
+        "1"
+      ],
+      "minItems": 2
+    },
+    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+      }
+    },
+    "Nss.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "5": {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        "6": {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "minItems": 7
+    },
+    "System.Decimal": {
+      "type": "string",
+      "pattern": "^msgpack extension 4 as base64: "
+    },
+    "Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        "1": {
+          "$ref": "#/definitions/System.Decimal",
+          "description": "Value"
+        }
+      },
+      "items": [
+        {
+          "$ref": "#/definitions/Nss.Rules.BoundNumericOperator",
+          "description": "Operator"
+        },
+        {
+          "$ref": "#/definitions/System.Decimal",
+          "description": "Value"
+        }
+      ],
+      "required": [
+        "0",
+        "1"
+      ],
+      "minItems": 2
+    },
+    "System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+      }
+    },
+    "Nss.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "5": {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        "6": {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[Nss.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Nss.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "description": "BoundNumerics"
+        },
+        {
+          "type": "integer",
+          "description": "BoundScale"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "minItems": 7
+    },
+    "System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Nss.Rules.AxisString": {
+      "type": [
+        "object",
+        "array"
+      ],
+      "properties": {
+        "1": {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        "2": {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        "3": {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        "7": {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "description": "BoundStrings"
+        }
+      },
+      "items": [
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": "string",
+          "description": "PropertyPath"
+        },
+        {
+          "type": "boolean",
+          "description": "IsOrientationHorizontal"
+        },
+        {
+          "type": "integer",
+          "description": "OrientationRelativeIndex"
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "type": [
+            "number",
+            "integer",
+            "string",
+            "boolean",
+            "object",
+            "array",
+            "null"
+          ],
+          "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
+        },
+        {
+          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "description": "BoundStrings"
+        }
+      ],
+      "required": [
+        "1",
+        "2",
+        "3",
+        "7"
+      ],
+      "minItems": 8
+    }
+  },
+  "$schema": "http://json-schema.org/draft-04/schema"
+}

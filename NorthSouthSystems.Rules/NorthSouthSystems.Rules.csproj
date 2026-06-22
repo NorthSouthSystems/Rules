@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="morelinq"/>
+        <PackageReference Include="Nerdbank.MessagePack"/>
+        <PackageReference Include="NorthSouthSystems.MessagePackable"/>
+        <PackageReference Include="System.Linq.Dynamic.Core"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="NorthSouthSystems.Rules.Excel"/>
+    </ItemGroup>
+
+</Project>

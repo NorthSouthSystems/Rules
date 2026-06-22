@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="morelinq" />
+        <PackageReference Include="Verify.XunitV3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\NorthSouthSystems.Rules\NorthSouthSystems.Rules.csproj" />
+        <ProjectReference Include="..\NorthSouthSystems.Rules.Excel\NorthSouthSystems.Rules.Excel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="NorthSouthSystems.Rules" />
+        <Using Include="NorthSouthSystems.Rules.Excel" />
+    </ItemGroup>
+
+</Project>

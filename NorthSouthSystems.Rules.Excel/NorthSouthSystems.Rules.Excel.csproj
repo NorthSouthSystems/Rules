@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="ClosedXML" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\NorthSouthSystems.Rules\NorthSouthSystems.Rules.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="NorthSouthSystems.Rules.Tests" />
+    </ItemGroup>
+
+</Project>
