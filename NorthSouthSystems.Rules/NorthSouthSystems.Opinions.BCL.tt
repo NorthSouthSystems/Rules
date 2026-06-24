@@ -3,6 +3,9 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Net"#>
+<#
+    const string rootNamespace = "NorthSouthSystems.Rules";
+#>
 // T4-generated @ <#= DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss 'UTC'") #>
 <#
 // T4 templates (best guess) run using a .NET Framework or Mono version that defaults to < TLS 1.2 which GitHub rejects.
@@ -55,7 +58,7 @@ foreach (string @using in usings)
     WriteLine(@using);
 
 WriteLine(string.Empty);
-WriteLine("namespace NorthSouthSystems.Rules;");
+WriteLine($"namespace {rootNamespace};");
 WriteLine(string.Empty);
 
 bool wasWhiteSpace = true;

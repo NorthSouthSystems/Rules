@@ -1,9 +1,8 @@
-﻿// T4-generated @ 2026-06-22 01:53:32 UTC
+﻿// T4-generated @ 2026-06-24 03:04:44 UTC
 #nullable enable
 
 using System.Buffers.Binary;
 using System.Collections.Concurrent;
-using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics;
 using System.Globalization;
@@ -45,7 +44,7 @@ internal static class ArgumentExceptionX
 
             if (messageIncludeIndices)
             {
-                message.Append(index++.ToString(CultureInfo.InvariantCulture));
+                message.Append(index++.ToString(InvariantCulture));
                 message.Append(": ");
             }
 
@@ -268,7 +267,7 @@ internal static class Throw
     private static void ComparerTEnumThrow<TEnum>(TEnum value, TEnum other, string? paramName, string inverseOperatorFriendlyName)
         where TEnum : struct, Enum =>
         throw new ArgumentOutOfRangeException(paramName, value,
-            string.Create(CultureInfo.InvariantCulture, $"{paramName} ('{value}') must be {inverseOperatorFriendlyName} '{other}'."));
+            string.Create(InvariantCulture, $"{paramName} ('{value}') must be {inverseOperatorFriendlyName} '{other}'."));
 
     #endregion
 
@@ -304,7 +303,7 @@ internal static class Throw
     private static void BetweenHelperThrow<T>(T value, T leftInclusive, T rightInclusive, string? paramName, bool isBetweenThrows)
         where T : IComparable<T> =>
         throw new ArgumentOutOfRangeException(paramName, value,
-            string.Create(CultureInfo.InvariantCulture, $"{paramName} ('{value}') must {(isBetweenThrows ? "not " : string.Empty)}be between '{leftInclusive}' and '{rightInclusive}' inclusively."));
+            string.Create(InvariantCulture, $"{paramName} ('{value}') must {(isBetweenThrows ? "not " : string.Empty)}be between '{leftInclusive}' and '{rightInclusive}' inclusively."));
 
     #endregion
 
@@ -339,7 +338,7 @@ internal static class Throw
     private static void BetweenEnumHelperThrow<TEnum>(TEnum value, TEnum leftInclusive, TEnum rightInclusive, string? paramName, bool isBetweenThrows)
         where TEnum : struct, Enum =>
         throw new ArgumentOutOfRangeException(paramName, value,
-            string.Create(CultureInfo.InvariantCulture, $"{paramName} ('{value}') must {(isBetweenThrows ? "not " : string.Empty)}be between '{leftInclusive}' and '{rightInclusive}' inclusively."));
+            string.Create(InvariantCulture, $"{paramName} ('{value}') must {(isBetweenThrows ? "not " : string.Empty)}be between '{leftInclusive}' and '{rightInclusive}' inclusively."));
 
     #endregion
 }
@@ -351,9 +350,6 @@ internal static class TypeX
         Throw.IfNull(type).IsValueType
             ? RuntimeHelpers.GetUninitializedObject(type)
             : null;
-
-    public static bool IsGenericNullable(this Type type) => Nullable.GetUnderlyingType(type) != null;
-    public static Type FlattenGenericNullable(this Type type) => Nullable.GetUnderlyingType(type) ?? type;
 
     // Unfortunately, there is no simpler method to determine this. All Systems.Numerics interfaces
     // are recursive generics (i.e. IInterface<T> where T : IInterface<T>), so they can't be used
@@ -427,6 +423,39 @@ internal static class TypeX
                 [typeof(object)] = "object"
             }
             .ToImmutableDictionary();
+
+    public static bool IsGenericNullable(this Type type) => Nullable.GetUnderlyingType(type) != null;
+    public static Type FlattenGenericNullable(this Type type) => Nullable.GetUnderlyingType(type) ?? type;
+
+    public static bool IsSubTypeOfGeneric(this Type type, Type genericTypeDefinition) =>
+        GetSubTypeOfGeneric(type, genericTypeDefinition) is not null;
+
+    public static Type? GetSubTypeOfGeneric(this Type type, Type genericTypeDefinition)
+    {
+        Throw.IfNull(type);
+
+        if (!Throw.IfNull(genericTypeDefinition).IsGenericTypeDefinition)
+            throw new ArgumentException("Must be a generic type definition.", nameof(genericTypeDefinition));
+
+        var types = genericTypeDefinition.IsInterface
+            ? type.GetInterfaces()
+            : SelfAndBaseTypes(type);
+
+        return types.SingleOrDefault(t => t.IsGenericType && t.GetGenericTypeDefinition() == genericTypeDefinition);
+    }
+
+    public static IEnumerable<Type> SelfAndBaseTypes(Type? t)
+    {
+        while (true)
+        {
+            if (t is null)
+                yield break;
+
+            yield return t;
+
+            t = t.BaseType;
+        }
+    }
 }
 
 [ExcludeFromCodeCoverage]
@@ -640,6 +669,26 @@ internal static class BinaryRoundTrip
 [ExcludeFromCodeCoverage]
 internal static class PathX
 {
+    public static string? CrawlToSolutionDirectory(string? currentDirectoryOverride = null)
+    {
+        var directory = new DirectoryInfo(currentDirectoryOverride ?? Directory.GetCurrentDirectory());
+
+        while (directory is not null)
+        {
+            bool hasSolution = directory.GetFiles("*.sln?")
+                .Select(f => f.Extension)
+                .Any(e => e.Equals(".sln", StringComparison.OrdinalIgnoreCase)
+                    || e.Equals(".slnx", StringComparison.OrdinalIgnoreCase));
+
+            if (hasSolution)
+                break;
+
+            directory = directory.Parent;
+        }
+
+        return directory?.FullName;
+    }
+
     public static string GetDirectoryNameOfCallerFilePath([CallerFilePath] string? callerFilePath = null)
     {
         if (!Path.IsPathRooted(Throw.IfNull(callerFilePath)))
