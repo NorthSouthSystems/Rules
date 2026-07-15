@@ -12,12 +12,12 @@
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.8.1"/>
         <PackageVersion Include="morelinq" Version="4.4.0"/>
         <PackageVersion Include="Nerdbank.GitVersioning" Version="3.10.91"/>
-        <PackageVersion Include="Nerdbank.MessagePack" Version="1.2.30"/>
+        <PackageVersion Include="Nerdbank.MessagePack" Version="1.2.36"/>
         <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.0.1"/>
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1"/>
         <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
-        <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.2"/>
-        <PackageVersion Include="Verify.XunitV3" Version="31.20.0"/>
+        <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.3"/>
+        <PackageVersion Include="Verify.XunitV3" Version="31.24.1"/>
         <PackageVersion Include="xunit.v3" Version="3.2.2"/>
         <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5"/>
     </ItemGroup>
