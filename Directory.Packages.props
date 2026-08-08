@@ -2,12 +2,14 @@
     <PropertyGroup>
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <DotNetVersion>10.0.10</DotNetVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageVersion Include="AwesomeAssertions" Version="9.4.0"/>
+        <PackageVersion Include="AwesomeAssertions" Version="9.5.0"/>
         <PackageVersion Include="BenchmarkDotNet" Version="0.15.8"/>
-        <PackageVersion Include="ClosedXML" Version="0.105.0"/>
+        <PackageVersion Include="ClosedXML" Version="0.105.1"/>
         <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.302"/>
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.8.1"/>
         <PackageVersion Include="morelinq" Version="4.4.0"/>
@@ -17,8 +19,28 @@
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1"/>
         <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
         <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.3"/>
-        <PackageVersion Include="Verify.XunitV3" Version="31.24.1"/>
+        <PackageVersion Include="Verify.XunitV3" Version="31.28.0"/>
         <PackageVersion Include="xunit.v3" Version="3.2.2"/>
         <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5"/>
+
+        <!-- Transitive Pinning -->
+        <!-- This will help prevent large(r) potentially breaking version bumps, and it will also -->
+        <!-- allow us to benefit from potential performance improvements to newer package versions. -->
+        <!-- In some cases, transitive pinning is necessary due to an unexplicable error, likely related to -->
+        <!-- explicit nuget.config package mapping (which we have since relaxed with a catch-all pattern): -->
+        <!-- NU1102 "Unable to find package ... with version (>= [a valid version])" -->
+
+        <!-- ClosedXML -->
+        <!-- Regarding SixLabors.Fonts: https://github.com/ClosedXML/ClosedXML/releases/tag/0.105.1 -->
+        <PackageVersion Include="DocumentFormat.OpenXml" Version="3.5.1"/>
+        <PackageVersion Include="ExcelNumberFormat" Version="1.1.0"/>
+        <PackageVersion Include="RBush.Signed" Version="4.0.0"/>
+        <PackageVersion Include="SixLabors.Fonts" Version="[2.1.3,3.0.0)"/>
+
+        <!-- DocumentFormat.OpenXml -->
+        <PackageVersion Include="System.IO.Packaging" Version="$(DotNetVersion)"/>
+
+        <!-- Nerdbank.MessagePack -->
+        <PackageVersion Include="PolyType" Version="1.4.1"/>
     </ItemGroup>
 </Project>
