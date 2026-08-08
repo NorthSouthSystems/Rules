@@ -70,7 +70,6 @@ public class T_AxisString_LookupBoundIndex
             ("foo", null),
             ("BAR", 1),
             ("FOObar", null),
-
             ("fOO", 0),
             ("bOO", 0),
             ("foO", null),
@@ -85,7 +84,6 @@ public class T_AxisString_LookupBoundIndex
             ("foo", null),
             ("BAR", 1),
             ("FOObar", 1),
-
             ("baz", null),
             ("BAZ", null)
         );
@@ -98,7 +96,6 @@ public class T_AxisString_LookupBoundIndex
             ("foo", null),
             ("BAR", 1),
             ("FOObar", null),
-
             ("baz", 1),
             ("BAZ", 1)
         );
@@ -121,10 +118,8 @@ public class T_AxisString_LookupBoundIndex
             ("foo", null),
             ("BAR", 1),
             ("FOObar", 0),
-
             ("baz", 1),
             ("BAZ", 1),
-
             ("FO", null),
             ("bars", null)
         );
@@ -137,16 +132,12 @@ public class T_AxisString_LookupBoundIndex
             ("foo", null),
             ("BAR", null),
             ("FOObar", 0),
-
             ("baz", null),
             ("BAZ", null),
-
             ("FO", null),
-
             ("FOObr", 0),
             ("FOOr", 0),
             ("FOO!r", 0),
-
             ("bazs", 1),
             ("BAZS", 1),
             ("bas", null),
@@ -182,7 +173,7 @@ public class T_AxisString_LookupBoundIndex
 
     internal static IEnumerable<(T Value, int? ExpectedIndex)> TestCasesWithWildcard<T>(
         IEnumerable<(T Value, int? ExpectedIndex)> testCases, int wildcardIndex) =>
-            testCases.Select(tc => (tc.Value, tc.Value is not null ? (tc.ExpectedIndex ?? wildcardIndex) : tc.ExpectedIndex));
+        testCases.Select(tc => (tc.Value, tc.Value is not null ? (tc.ExpectedIndex ?? wildcardIndex) : tc.ExpectedIndex));
 }
 
 public class T_AxisString_AppendBoundDescription

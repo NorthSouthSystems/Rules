@@ -7,15 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClosedXML" />
+        <PackageReference Include="ClosedXML"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\NorthSouthSystems.Rules\NorthSouthSystems.Rules.csproj" />
+        <ProjectReference Include="..\NorthSouthSystems.Rules\NorthSouthSystems.Rules.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="NorthSouthSystems.Rules.Tests" />
+        <InternalsVisibleTo Include="NorthSouthSystems.Rules.Tests"/>
     </ItemGroup>
 
 </Project>
