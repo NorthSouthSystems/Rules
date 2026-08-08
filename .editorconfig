@@ -10,7 +10,7 @@ insert_final_newline = true
 tab_width = 4
 trim_trailing_whitespace = true
 
-# Microsoft .NET properties
+# Microsoft .NET properties (auto-detected then edited "as-needed"; TODO: Audit.)
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = protected, private, public, internal, file, new, static, override, volatile, virtual, async, sealed, extern, unsafe, readonly, abstract, required:suggestion
 csharp_style_prefer_utf8_string_literals = true:suggestion
@@ -64,10 +64,9 @@ dotnet_style_qualification_for_method = false:suggestion
 dotnet_style_qualification_for_property = false:suggestion
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
 
-# ReSharper properties
+# ReSharper properties (auto-detected then edited "as-needed"; TODO: Audit.)
 resharper_align_multiline_binary_expressions_chain = false
 resharper_arguments_skip_single = true
-resharper_arguments_string_literal = positional
 resharper_autodetect_indent_settings = true
 resharper_blank_lines_after_block_statements = 0
 resharper_blank_lines_after_control_transfer_statements = 1
@@ -128,7 +127,7 @@ resharper_wrap_primary_constructor_parameters_style = wrap_if_long
 resharper_xmldoc_max_line_length = 0
 resharper_xml_max_line_length = 0
 
-# ReSharper inspection severities
+# ReSharper inspection severities (auto-detected then edited "as-needed"; TODO: Audit.)
 resharper_arrange_this_qualifier_highlighting = hint
 resharper_arrange_type_member_modifiers_highlighting = hint
 resharper_arrange_type_modifiers_highlighting = hint
