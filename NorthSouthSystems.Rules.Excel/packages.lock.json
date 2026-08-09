@@ -1,142 +1,139 @@
 {
-    "version": 2,
-    "dependencies": {
-        "net10.0": {
-            "ClosedXML": {
-                "type": "Direct",
-                "requested": "[0.105.1, )",
-                "resolved": "0.105.1",
-                "contentHash": "X1ruIP9h2FBEK7jmO0peq3s6/Zqt5ve5a9f9kn6WUjdsUWvGbQlqxuGLz822xuFLlmnSeAfWFTGeX/tZlmAt+g==",
-                "dependencies": {
-                    "ClosedXML.Parser": "2.0.0",
-                    "DocumentFormat.OpenXml": "[3.1.1, 4.0.0)",
-                    "ExcelNumberFormat": "1.1.0",
-                    "RBush.Signed": "4.0.0",
-                    "SixLabors.Fonts": "[1.0.0, 3.0.0)"
-                }
-            },
-            "Microsoft.CodeAnalysis.NetAnalyzers": {
-                "type": "Direct",
-                "requested": "[10.0.302, )",
-                "resolved": "10.0.302",
-                "contentHash": "mbJSf5EOYkgnPQ0jO0qo4AByQYDGbBZDs0+23xdkK2ckuvYJGlPT1nPR0WCSnzwXdiVypOTZ4ArcT4H/X/f1mQ=="
-            },
-            "Nerdbank.GitVersioning": {
-                "type": "Direct",
-                "requested": "[3.10.91, )",
-                "resolved": "3.10.91",
-                "contentHash": "9MtEXm/um2lQAEoek1EkF4CXNH4JuXxv2jV3Ew2XlzP0LXxFaFiECS7ji8zf1ZaMnPGYbbom+Nm6y4ADc5HNHQ=="
-            },
-            "ClosedXML.Parser": {
-                "type": "Transitive",
-                "resolved": "2.0.0",
-                "contentHash": "ngTqjYreDYNytG1W5d3ewHsw0ukmmrgV7EKnS4/40rXoYZGt07jrBvo+N+GxT49rcageUMUiprV0jYT4nwVBHQ=="
-            },
-            "DocumentFormat.OpenXml.Framework": {
-                "type": "Transitive",
-                "resolved": "3.5.1",
-                "contentHash": "U5txtc3ORno73xQx9Lf2gWzfaSZnZwKHfLkTAslhlew9lxe5XbUiCt0dY1fHeAf8yRqszUAe5i/+xLC9R/Xfsw==",
-                "dependencies": {
-                    "System.IO.Packaging": "10.0.2"
-                }
-            },
-            "Microsoft.VisualStudio.Validation": {
-                "type": "Transitive",
-                "resolved": "17.13.22",
-                "contentHash": "fC20ITOxlUpGQ0ltAxITQbeFxwuB6OjLT3lByC4+/Gm46o/Mwv9hlIVrBhiUhnqdQzUUvr4EHkdiYe7WOSMLmw=="
-            },
-            "System.IO.Hashing": {
-                "type": "Transitive",
-                "resolved": "10.0.9",
-                "contentHash": "vixglGnKEexAJDeIRhyayZYzxyrgK1K9GU3K/zRZVwDbaDcMkSqj4WDHoVmQMNfsdUtLALfNSJw6mBIpdxie4A=="
-            },
-            "northsouthsystems.rules": {
-                "type": "Project",
-                "dependencies": {
-                    "Nerdbank.MessagePack": "[1.2.36, )",
-                    "NorthSouthSystems.MessagePackable": "[1.0.1, )",
-                    "NorthSouthSystems.Text": "[8.0.1, )",
-                    "System.Linq.Dynamic.Core": "[1.7.3, )",
-                    "morelinq": "[4.4.0, )"
-                }
-            },
-            "DocumentFormat.OpenXml": {
-                "type": "CentralTransitive",
-                "requested": "[3.5.1, )",
-                "resolved": "3.5.1",
-                "contentHash": "zxdOf5VVCe/uNklbRhj8dVBzQGj3DoqkUuqOp9cAZVuN8mNYDjof1lvSQA2OQNr8Ptc9d7pbA7Azq/ReaI3FpA==",
-                "dependencies": {
-                    "DocumentFormat.OpenXml.Framework": "3.5.1"
-                }
-            },
-            "ExcelNumberFormat": {
-                "type": "CentralTransitive",
-                "requested": "[1.1.0, )",
-                "resolved": "1.1.0",
-                "contentHash": "R3BVHPs9O+RkExbZYTGT0+9HLbi8ZrNij1Yziyw6znd3J7P3uoIR07uwTLGOogtz1p6+0sna66eBoXu7tBiVQA=="
-            },
-            "morelinq": {
-                "type": "CentralTransitive",
-                "requested": "[4.4.0, )",
-                "resolved": "4.4.0",
-                "contentHash": "QX3bsK9oFeUXk8tFsc9NkI6NnCr8Ar/ex027p+ZZ/jdLCdX2RlryDtxUqZW5j45NVwn4E4Z4hzupsoMQd6Yxtg=="
-            },
-            "Nerdbank.MessagePack": {
-                "type": "CentralTransitive",
-                "requested": "[1.2.36, )",
-                "resolved": "1.2.36",
-                "contentHash": "kws2NFTV1rLbkQL1O91H0cyi0chVQMquagx4yywAg4dquFp0JJB41NJS9M39YFFoHO4yxa/IbRqBLFhLoWHuDQ==",
-                "dependencies": {
-                    "Microsoft.VisualStudio.Validation": "17.13.22",
-                    "PolyType": "1.3.1"
-                }
-            },
-            "NorthSouthSystems.MessagePackable": {
-                "type": "CentralTransitive",
-                "requested": "[1.0.1, )",
-                "resolved": "1.0.1",
-                "contentHash": "VjUtT8om8hQSZaiLw/lK0RiVrYRunzs76s/UnFRMDXOcFuubh2GttbqlOMq9NdNPJ3c39A8HO9TmorLsEs9WkA==",
-                "dependencies": {
-                    "Nerdbank.MessagePack": "1.2.30",
-                    "System.IO.Hashing": "10.0.9"
-                }
-            },
-            "NorthSouthSystems.Text": {
-                "type": "CentralTransitive",
-                "requested": "[8.0.1, )",
-                "resolved": "8.0.1",
-                "contentHash": "oPOkCLiQ14gge7yMyleRdvQFCRBSSwFGXuDyWd3FqoyLmRhn3I3rLBPnPLpy4Tpg+fsTJC0VCEPPOjxV4ZbpZQ=="
-            },
-            "PolyType": {
-                "type": "CentralTransitive",
-                "requested": "[1.4.1, )",
-                "resolved": "1.4.1",
-                "contentHash": "pWxJ5tNPtwZx0GzKRqvGbSZ7EwBgM0DjUyOSg2/iQ9pn5XhvmeWZfIj3SBs36hpS89oGoRqmjjA+3+Qekbisyw=="
-            },
-            "RBush.Signed": {
-                "type": "CentralTransitive",
-                "requested": "[4.0.0, )",
-                "resolved": "4.0.0",
-                "contentHash": "aP5KQxL5RnFNGW1f0euYVBfCatkLw5iEzMRJcXKq8LWWP4Cp3+qoSq1tDDL2vvJ2rM0ychmVMa2VaEKLS6uX4w=="
-            },
-            "SixLabors.Fonts": {
-                "type": "CentralTransitive",
-                "requested": "[2.1.3, 3.0.0)",
-                "resolved": "2.1.3",
-                "contentHash": "ORWbZ5BHrC/LZvo+Y09MnoJq5VUKD85LsYALk+YI7CHFra+m5arCkz00IntDM6SrAiB22bvSdKtKmuCyHOKlqg=="
-            },
-            "System.IO.Packaging": {
-                "type": "CentralTransitive",
-                "requested": "[10.0.10, )",
-                "resolved": "10.0.10",
-                "contentHash": "SZT8XZ8Tktdnhaq5eWOJWN0VBczFZ7l6K5C5ykbaQFXZ0Uv8UBJwQcYUM1NVk5pKAmPlHnancMh33jF6IKnUrg=="
-            },
-            "System.Linq.Dynamic.Core": {
-                "type": "CentralTransitive",
-                "requested": "[1.7.3, )",
-                "resolved": "1.7.3",
-                "contentHash": "0m52+B4Jce/9AXLXPZnnFW7NeLotHBuYvbsVF3D/DTvvbCGJZdskPn5xjr5sjnnFI3XekNdPqG2djyJE3UU7SA=="
-            }
+  "version": 2,
+  "dependencies": {
+    "net10.0": {
+      "ClosedXML": {
+        "type": "Direct",
+        "requested": "[0.105.1, )",
+        "resolved": "0.105.1",
+        "contentHash": "X1ruIP9h2FBEK7jmO0peq3s6/Zqt5ve5a9f9kn6WUjdsUWvGbQlqxuGLz822xuFLlmnSeAfWFTGeX/tZlmAt+g==",
+        "dependencies": {
+          "ClosedXML.Parser": "2.0.0",
+          "DocumentFormat.OpenXml": "[3.1.1, 4.0.0)",
+          "ExcelNumberFormat": "1.1.0",
+          "RBush.Signed": "4.0.0",
+          "SixLabors.Fonts": "[1.0.0, 3.0.0)"
         }
+      },
+      "Microsoft.CodeAnalysis.NetAnalyzers": {
+        "type": "Direct",
+        "requested": "[10.0.302, )",
+        "resolved": "10.0.302",
+        "contentHash": "mbJSf5EOYkgnPQ0jO0qo4AByQYDGbBZDs0+23xdkK2ckuvYJGlPT1nPR0WCSnzwXdiVypOTZ4ArcT4H/X/f1mQ=="
+      },
+      "Nerdbank.GitVersioning": {
+        "type": "Direct",
+        "requested": "[3.10.91, )",
+        "resolved": "3.10.91",
+        "contentHash": "9MtEXm/um2lQAEoek1EkF4CXNH4JuXxv2jV3Ew2XlzP0LXxFaFiECS7ji8zf1ZaMnPGYbbom+Nm6y4ADc5HNHQ=="
+      },
+      "ClosedXML.Parser": {
+        "type": "Transitive",
+        "resolved": "2.0.0",
+        "contentHash": "ngTqjYreDYNytG1W5d3ewHsw0ukmmrgV7EKnS4/40rXoYZGt07jrBvo+N+GxT49rcageUMUiprV0jYT4nwVBHQ=="
+      },
+      "DocumentFormat.OpenXml.Framework": {
+        "type": "Transitive",
+        "resolved": "3.5.1",
+        "contentHash": "U5txtc3ORno73xQx9Lf2gWzfaSZnZwKHfLkTAslhlew9lxe5XbUiCt0dY1fHeAf8yRqszUAe5i/+xLC9R/Xfsw==",
+        "dependencies": {
+          "System.IO.Packaging": "10.0.2"
+        }
+      },
+      "ExcelNumberFormat": {
+        "type": "Transitive",
+        "resolved": "1.1.0",
+        "contentHash": "R3BVHPs9O+RkExbZYTGT0+9HLbi8ZrNij1Yziyw6znd3J7P3uoIR07uwTLGOogtz1p6+0sna66eBoXu7tBiVQA=="
+      },
+      "Microsoft.VisualStudio.Validation": {
+        "type": "Transitive",
+        "resolved": "17.13.22",
+        "contentHash": "fC20ITOxlUpGQ0ltAxITQbeFxwuB6OjLT3lByC4+/Gm46o/Mwv9hlIVrBhiUhnqdQzUUvr4EHkdiYe7WOSMLmw=="
+      },
+      "RBush.Signed": {
+        "type": "Transitive",
+        "resolved": "4.0.0",
+        "contentHash": "aP5KQxL5RnFNGW1f0euYVBfCatkLw5iEzMRJcXKq8LWWP4Cp3+qoSq1tDDL2vvJ2rM0ychmVMa2VaEKLS6uX4w=="
+      },
+      "System.IO.Hashing": {
+        "type": "Transitive",
+        "resolved": "10.0.9",
+        "contentHash": "vixglGnKEexAJDeIRhyayZYzxyrgK1K9GU3K/zRZVwDbaDcMkSqj4WDHoVmQMNfsdUtLALfNSJw6mBIpdxie4A=="
+      },
+      "System.IO.Packaging": {
+        "type": "Transitive",
+        "resolved": "10.0.2",
+        "contentHash": "JTpM4z0wpoIHHDvlCU27HsXo+zVnpWib94HXQpzzr+jc/P9NYf4w353AK4MXyGq/grm1mbLi7eXsOsDU8sGmNg=="
+      },
+      "northsouthsystems.rules": {
+        "type": "Project",
+        "dependencies": {
+          "Nerdbank.MessagePack": "[1.2.36, )",
+          "NorthSouthSystems.MessagePackable": "[1.0.1, )",
+          "NorthSouthSystems.Text": "[8.0.1, )",
+          "System.Linq.Dynamic.Core": "[1.7.3, )",
+          "morelinq": "[4.4.0, )"
+        }
+      },
+      "DocumentFormat.OpenXml": {
+        "type": "CentralTransitive",
+        "requested": "[3.5.1, )",
+        "resolved": "3.5.1",
+        "contentHash": "zxdOf5VVCe/uNklbRhj8dVBzQGj3DoqkUuqOp9cAZVuN8mNYDjof1lvSQA2OQNr8Ptc9d7pbA7Azq/ReaI3FpA==",
+        "dependencies": {
+          "DocumentFormat.OpenXml.Framework": "3.5.1"
+        }
+      },
+      "morelinq": {
+        "type": "CentralTransitive",
+        "requested": "[4.4.0, )",
+        "resolved": "4.4.0",
+        "contentHash": "QX3bsK9oFeUXk8tFsc9NkI6NnCr8Ar/ex027p+ZZ/jdLCdX2RlryDtxUqZW5j45NVwn4E4Z4hzupsoMQd6Yxtg=="
+      },
+      "Nerdbank.MessagePack": {
+        "type": "CentralTransitive",
+        "requested": "[1.2.36, )",
+        "resolved": "1.2.36",
+        "contentHash": "kws2NFTV1rLbkQL1O91H0cyi0chVQMquagx4yywAg4dquFp0JJB41NJS9M39YFFoHO4yxa/IbRqBLFhLoWHuDQ==",
+        "dependencies": {
+          "Microsoft.VisualStudio.Validation": "17.13.22",
+          "PolyType": "1.3.1"
+        }
+      },
+      "NorthSouthSystems.MessagePackable": {
+        "type": "CentralTransitive",
+        "requested": "[1.0.1, )",
+        "resolved": "1.0.1",
+        "contentHash": "VjUtT8om8hQSZaiLw/lK0RiVrYRunzs76s/UnFRMDXOcFuubh2GttbqlOMq9NdNPJ3c39A8HO9TmorLsEs9WkA==",
+        "dependencies": {
+          "Nerdbank.MessagePack": "1.2.30",
+          "System.IO.Hashing": "10.0.9"
+        }
+      },
+      "NorthSouthSystems.Text": {
+        "type": "CentralTransitive",
+        "requested": "[8.0.1, )",
+        "resolved": "8.0.1",
+        "contentHash": "oPOkCLiQ14gge7yMyleRdvQFCRBSSwFGXuDyWd3FqoyLmRhn3I3rLBPnPLpy4Tpg+fsTJC0VCEPPOjxV4ZbpZQ=="
+      },
+      "PolyType": {
+        "type": "CentralTransitive",
+        "requested": "[1.4.1, )",
+        "resolved": "1.4.1",
+        "contentHash": "pWxJ5tNPtwZx0GzKRqvGbSZ7EwBgM0DjUyOSg2/iQ9pn5XhvmeWZfIj3SBs36hpS89oGoRqmjjA+3+Qekbisyw=="
+      },
+      "SixLabors.Fonts": {
+        "type": "CentralTransitive",
+        "requested": "[2.1.3, 3.0.0)",
+        "resolved": "2.1.3",
+        "contentHash": "ORWbZ5BHrC/LZvo+Y09MnoJq5VUKD85LsYALk+YI7CHFra+m5arCkz00IntDM6SrAiB22bvSdKtKmuCyHOKlqg=="
+      },
+      "System.Linq.Dynamic.Core": {
+        "type": "CentralTransitive",
+        "requested": "[1.7.3, )",
+        "resolved": "1.7.3",
+        "contentHash": "0m52+B4Jce/9AXLXPZnnFW7NeLotHBuYvbsVF3D/DTvvbCGJZdskPn5xjr5sjnnFI3XekNdPqG2djyJE3UU7SA=="
+      }
     }
+  }
 }
