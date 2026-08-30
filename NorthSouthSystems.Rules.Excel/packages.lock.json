@@ -57,8 +57,8 @@
       },
       "System.IO.Hashing": {
         "type": "Transitive",
-        "resolved": "10.0.10",
-        "contentHash": "eE839zyWZD/UBZYzP2lu9fhHX6RWe63/jz3Jxf+JumzO/db+Vc2s7CMiDwxk9ti2NTUft2tdRx31Rw2OjKbecA=="
+        "resolved": "10.0.11",
+        "contentHash": "OzKDcIRkeNJeC8qAsbn8yJXnfTLP1dtkWILe+T56Gf/z+IkAASi7sMqLqJQat08j5z/mRN5xVtoAwbkMNMoBUQ=="
       },
       "System.IO.Packaging": {
         "type": "Transitive",
@@ -69,7 +69,7 @@
         "type": "Project",
         "dependencies": {
           "Nerdbank.MessagePack": "[1.3.85, )",
-          "NorthSouthSystems.MessagePackable": "[1.1.9-beta, )",
+          "NorthSouthSystems.MessagePackable": "[1.1.12-beta, )",
           "NorthSouthSystems.Text": "[8.0.1, )",
           "System.Linq.Dynamic.Core": "[1.7.3, )",
           "morelinq": "[4.4.0, )"
@@ -102,13 +102,13 @@
       },
       "NorthSouthSystems.MessagePackable": {
         "type": "CentralTransitive",
-        "requested": "[1.1.9-beta, )",
-        "resolved": "1.1.9-beta",
-        "contentHash": "niAAv/blPOPIX1zOXxeJxAxsBpiIG2E/0w2e4nlPLlb7/IF3vicj58EWp/xlfbfsG9AsA4gK8se7Ye0+z3k2cw==",
+        "requested": "[1.1.12-beta, )",
+        "resolved": "1.1.12-beta",
+        "contentHash": "cscs7hwK/IcK2k1N5glQXizUzv80C29dxSrvldUJ/Y9hdEvIe/Snkmw+2pZL1JAW4YtI1sGNFza2eN+4x/CafQ==",
         "dependencies": {
-          "Nerdbank.MessagePack": "1.2.36",
+          "Nerdbank.MessagePack": "1.3.85",
           "NorthSouthSystems.Text": "8.0.1",
-          "System.IO.Hashing": "10.0.10"
+          "System.IO.Hashing": "10.0.11"
         }
       },
       "NorthSouthSystems.Text": {
