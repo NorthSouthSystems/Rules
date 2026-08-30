@@ -2,25 +2,23 @@
     <PropertyGroup>
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-
-        <DotNetVersion>10.0.10</DotNetVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageVersion Include="AwesomeAssertions" Version="9.5.0"/>
+        <PackageVersion Include="AwesomeAssertions" Version="9.6.0"/>
         <PackageVersion Include="ClosedXML" Version="0.105.1"/>
         <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.10.0"/>
         <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23"/>
         <PackageVersion Include="morelinq" Version="4.4.0"/>
-        <PackageVersion Include="Nerdbank.GitVersioning" Version="3.10.91"/>
-        <PackageVersion Include="Nerdbank.MessagePack" Version="1.2.36"/>
+        <PackageVersion Include="Nerdbank.GitVersioning" Version="3.10.94"/>
+        <PackageVersion Include="Nerdbank.MessagePack" Version="1.3.85"/>
         <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.1.9-beta"/>
         <!-- NorthSouthSystems.Opinions.BCL: Run the T4 template to update! -->
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1"/>
         <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
         <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.3"/>
-        <PackageVersion Include="Verify.XunitV3" Version="31.28.0"/>
-        <PackageVersion Include="xunit.v3" Version="3.2.2"/>
+        <PackageVersion Include="Verify.XunitV3" Version="32.0.0"/>
+        <PackageVersion Include="xunit.v3" Version="4.0.0"/>
 
         <!-- Transitive Pinning -->
         <!-- This will help prevent large(r) potentially breaking version bumps, and it will also -->
