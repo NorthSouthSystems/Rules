@@ -1,0 +1,3 @@
+[T_AxisMap_LookupCellValue.*.cs]
+arguments_string_literal = named
+csharp_arguments_string_literal = named

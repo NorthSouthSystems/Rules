@@ -1,8 +1,7 @@
-﻿// @formatter:arguments_literal named
-public partial class T_AxisMap_LookupCellValue
+﻿public partial class T_AxisMap_LookupCellValue
 {
     [Fact]
-    [Trait("Duration", "Long")]
+    [Trait(name: "Duration", value: "Long")]
     public void Fuzz()
     {
         int fuzzAxisMapCount = FuzzAxisMapCount;
@@ -48,7 +47,7 @@ public partial class T_AxisMap_LookupCellValue
         int verticalAxesCount = axesCount - horizontalAxesCount;
 
         horizontalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax); // Sanity
-        verticalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax);   // Sanity
+        verticalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax); // Sanity
 
         return (GetFuzzBoundCounts(horizontalAxesCount), GetFuzzBoundCounts(verticalAxesCount));
 
@@ -59,10 +58,10 @@ public partial class T_AxisMap_LookupCellValue
     private static TheInput GetFuzzInput(int[] horizontalBoundCounts, int[] verticalBoundCounts)
     {
         return new(
-            H0_: GetSuffix(true, 0),
-            H1_: GetSuffix(true, 1),
-            H2_: GetSuffix(true, 2),
-            H3_: GetSuffix(true, 3),
+            GetSuffix(true, 0),
+            GetSuffix(true, 1),
+            GetSuffix(true, 2),
+            GetSuffix(true, 3),
             V0_: GetSuffix(false, 0),
             V1_: GetSuffix(false, 1),
             V2_: GetSuffix(false, 2),

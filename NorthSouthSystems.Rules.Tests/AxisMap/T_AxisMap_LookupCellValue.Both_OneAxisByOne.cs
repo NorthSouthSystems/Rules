@@ -1,5 +1,4 @@
-﻿// @formatter:arguments_literal named
-public partial class T_AxisMap_LookupCellValue
+﻿public partial class T_AxisMap_LookupCellValue
 {
     [Fact]
     public void Both_OneAxisByOne()
