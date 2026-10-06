@@ -1,4 +1,5 @@
-﻿public partial class T_AxisMap_LookupCellValue
+﻿// @formatter:arguments_literal named
+public partial class T_AxisMap_LookupCellValue
 {
     [Fact]
     [Trait("Duration", "Long")]

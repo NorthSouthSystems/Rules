@@ -1,4 +1,5 @@
-﻿public class T_AxisMap_ParseValidateAndConstruct
+﻿// @formatter:arguments_literal named
+public class T_AxisMap_ParseValidateAndConstruct
 {
     [Fact]
     public void Exceptions()
