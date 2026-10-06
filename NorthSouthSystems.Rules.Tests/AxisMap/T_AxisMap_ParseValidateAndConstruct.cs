@@ -16,7 +16,10 @@
                 .. Enumerable.Range(0, AxisMap.AxesTotalCountMax + 1)
                     .Select(axisIndex =>
                         AxisString.ParseValidateAndConstruct(
-                            string.Create(InvariantCulture, $"H{axisIndex}"), true, axisIndex, ["A"]))
+                            string.Create(InvariantCulture, $"H{axisIndex}"),
+                            true,
+                            axisIndex,
+                            ["A"]))
                     .Cast<Axis>()
             ],
             0,
@@ -28,7 +31,10 @@
                 .. Enumerable.Range(0, AxisMap.AxesOrientationCountMax + 1)
                     .Select(axisIndex =>
                         AxisString.ParseValidateAndConstruct(
-                            string.Create(InvariantCulture, $"H{axisIndex}"), true, axisIndex, ["A"]))
+                            string.Create(InvariantCulture, $"H{axisIndex}"),
+                            true,
+                            axisIndex,
+                            ["A"]))
                     .Cast<Axis>()
             ],
             0,
@@ -38,7 +44,9 @@
         act = static () => AxisMap<string>.ParseValidateAndConstructFromTable(
             [AxisString.ParseValidateAndConstruct(nameof(T_AxisMapInput.TheString), true, 0, ["A"])],
             0,
-            [.. Enumerable.Repeat("A", AxisMap.CellValuesCountMax + 1)]); // This would fail the Axis calculation and CellValues count validation.
+            [
+                .. Enumerable.Repeat("A", AxisMap.CellValuesCountMax + 1)
+            ]); // This would fail the Axis calculation and CellValues count validation.
         act.Should().ThrowExactly<ArgumentOutOfRangeException>().Which.ParamName.Should().Be("cellValuesRaw.Length");
 
         act = static () => AxisMap<string>.ParseValidateAndConstructFromTable(
@@ -92,12 +100,14 @@
 
             map.ThrowIfAxesInputTypeMismatches(typeof(T_AxisMapInput));
         };
-        act.Should().ThrowExactly<ArgumentException>().WithMessage("Axes Types must match their corresponding inputType's Property's Type*");
+        act.Should().ThrowExactly<ArgumentException>()
+            .WithMessage("Axes Types must match their corresponding inputType's Property's Type*");
 
         act = static () => AxisMap<string>.ParseValidateAndConstructFromTable(
             [AxisString.ParseValidateAndConstruct(nameof(T_AxisMapInput.TheString), true, 0, ["A"])],
             1,
             ["A"]);
-        act.Should().ThrowExactly<ArgumentOutOfRangeException>().Which.ParamName.Should().Be("cellValueScaleForFormatting");
+        act.Should().ThrowExactly<ArgumentOutOfRangeException>()
+            .Which.ParamName.Should().Be("cellValueScaleForFormatting");
     }
 }

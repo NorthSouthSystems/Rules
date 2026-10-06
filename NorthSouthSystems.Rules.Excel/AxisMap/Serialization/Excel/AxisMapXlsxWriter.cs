@@ -9,7 +9,8 @@ internal static class AxisMapXlsxWriter
 {
     // EvaluateFormulasBeforeSaving or KeystoneCell.InvalidateFormula (prior to reading Value) is required
     // for KeystoneCell to function properly. We do both (reads occur in AxisMapXlsxTable and ToCsvExtensions).
-    private static readonly SaveOptions _saveOptions = new() { EvaluateFormulasBeforeSaving = true, ValidatePackage = true };
+    private static readonly SaveOptions _saveOptions =
+        new() { EvaluateFormulasBeforeSaving = true, ValidatePackage = true };
 
     private const double _nameVerticalColumnWidth = 2.5;
     private const double _boundColumnWidth = 12.5;
@@ -25,7 +26,7 @@ internal static class AxisMapXlsxWriter
             Worksheet = Workbook.AddWorksheet(AxisMapXlsxTable.WorksheetName);
 
             var cellValuesTopLeftCell = Worksheet.Cell(
-                2 + Keystone.CellValuesRowOffset,     // Excel is 1-based + Keystone
+                2 + Keystone.CellValuesRowOffset, // Excel is 1-based + Keystone
                 1 + Keystone.CellValuesColumnOffset); // Excel is 1-based
 
             CellValuesRange = cellValuesTopLeftCell.AsTopLeftOfRange(
@@ -75,7 +76,8 @@ internal static class AxisMapXlsxWriter
         context.CellValuesRange.FirstCell().Select();
         context.CellValuesRange.Style.Protection.Locked = false;
 
-        context.Worksheet.Protect(nameof(AxisMap),
+        context.Worksheet.Protect(
+            nameof(AxisMap),
             XLProtectionAlgorithm.Algorithm.SHA512,
             XLSheetProtectionElements.FormatColumns | XLSheetProtectionElements.SelectEverything);
     }
@@ -89,7 +91,9 @@ internal static class AxisMapXlsxWriter
 
         string isInvalidPredicate = GetIsInvalidPredicate(map.CellValueType, context.CellValuesRange.RangeAddress);
 
-        keystoneCell.FormulaA1 = string.Create(InvariantCulture, $"IF({isInvalidPredicate}, \"{AxisMapTableKeystone.InvalidSentinel}\", \"{keystone}\")");
+        keystoneCell.FormulaA1 = string.Create(
+            InvariantCulture,
+            $"IF({isInvalidPredicate}, \"{AxisMapTableKeystone.InvalidSentinel}\", \"{keystone}\")");
 
         var keystoneRange = keystoneCell.AsTopLeftOfRange(
             1,
@@ -129,7 +133,8 @@ internal static class AxisMapXlsxWriter
             .Fill.SetBackgroundColor(XLColor.LightPink);
     }
 
-    private static readonly string _invalidSentinelPredicate = string.Create(InvariantCulture, $"A1 = \"{AxisMapTableKeystone.InvalidSentinel}\"");
+    private static readonly string _invalidSentinelPredicate =
+        string.Create(InvariantCulture, $"A1 = \"{AxisMapTableKeystone.InvalidSentinel}\"");
 
     private static void WriteAxesHorizontal(Context context)
     {
@@ -149,7 +154,7 @@ internal static class AxisMapXlsxWriter
         foreach (var axis in map.Axes.Where(a => a.IsOrientationHorizontal))
         {
             var propertyPathCell = worksheet.Cell(
-                2 + (2 * axis.OrientationRelativeIndex),
+                2 + 2 * axis.OrientationRelativeIndex,
                 1 + keystone.CellValuesColumnOffset);
 
             propertyPathCell.Value = axis.PropertyPath;
@@ -165,15 +170,23 @@ internal static class AxisMapXlsxWriter
             propertyPathRange.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thin);
             propertyPathRange.Style.Border.SetBottomBorder(XLBorderStyleValues.None);
 
-            WriteAxisHorizontal(context, axis, propertyPathCell.CellBelow(),
-                repeatingLeftBorderColumnNumbers, ref repeatNext);
+            WriteAxisHorizontal(
+                context,
+                axis,
+                propertyPathCell.CellBelow(),
+                repeatingLeftBorderColumnNumbers,
+                ref repeatNext);
         }
 
         WriteAxesHorizontalRepeatingLeftBorders(context, repeatingLeftBorderColumnNumbers);
     }
 
-    private static void WriteAxisHorizontal(Context context, Axis axis, IXLCell boundCell,
-        List<int> repeatingLeftBorderColumnNumbers, ref int repeatNext)
+    private static void WriteAxisHorizontal(
+        Context context,
+        Axis axis,
+        IXLCell boundCell,
+        List<int> repeatingLeftBorderColumnNumbers,
+        ref int repeatNext)
     {
         int repeat = repeatNext;
         repeatNext *= axis.BoundCount;
@@ -215,15 +228,19 @@ internal static class AxisMapXlsxWriter
         }
     }
 
-    private static void WriteAxesHorizontalRepeatingLeftBorders(Context context, List<int> repeatingLeftBorderColumnNumbers)
+    private static void WriteAxesHorizontalRepeatingLeftBorders(
+        Context context,
+        List<int> repeatingLeftBorderColumnNumbers)
     {
         foreach (var columnNumber in repeatingLeftBorderColumnNumbers.CountBy(n => n).OrderBy(n => n.Value))
         {
             var borderStyle = GetBorderStyleByRepeatCount(columnNumber.Value);
 
             context.Worksheet.Range(
-                    1, columnNumber.Key,
-                    context.CellValuesRange.RangeAddress.LastAddress.RowNumber, columnNumber.Key)
+                    1,
+                    columnNumber.Key,
+                    context.CellValuesRange.RangeAddress.LastAddress.RowNumber,
+                    columnNumber.Key)
                 .Style
                 .Border.SetLeftBorder(borderStyle);
         }
@@ -240,7 +257,7 @@ internal static class AxisMapXlsxWriter
         {
             var propertyPathCell = context.Worksheet.Cell(
                 2 + context.Keystone.CellValuesRowOffset,
-                1 + (2 * axis.OrientationRelativeIndex));
+                1 + 2 * axis.OrientationRelativeIndex);
 
             propertyPathCell.Value = axis.PropertyPath;
             propertyPathCell.Style.Font.Bold = true;
@@ -258,15 +275,23 @@ internal static class AxisMapXlsxWriter
             propertyPathRange.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thin);
             propertyPathRange.Style.Border.SetRightBorder(XLBorderStyleValues.None);
 
-            WriteAxisVertical(context, axis, propertyPathCell.CellRight(),
-                repeatingTopBorderRowNumbers, ref repeatNext);
+            WriteAxisVertical(
+                context,
+                axis,
+                propertyPathCell.CellRight(),
+                repeatingTopBorderRowNumbers,
+                ref repeatNext);
         }
 
         WriteAxesVerticalRepeatingTopBorders(context, repeatingTopBorderRowNumbers);
     }
 
-    private static void WriteAxisVertical(Context context, Axis axis, IXLCell boundCell,
-        List<int> repeatingTopBorderRowNumbers, ref int repeatNext)
+    private static void WriteAxisVertical(
+        Context context,
+        Axis axis,
+        IXLCell boundCell,
+        List<int> repeatingTopBorderRowNumbers,
+        ref int repeatNext)
     {
         int repeat = repeatNext;
         repeatNext *= axis.BoundCount;
@@ -315,8 +340,10 @@ internal static class AxisMapXlsxWriter
             var borderStyle = GetBorderStyleByRepeatCount(rowNumber.Value);
 
             context.Worksheet.Range(
-                    rowNumber.Key, 1,
-                    rowNumber.Key, context.CellValuesRange.RangeAddress.LastAddress.ColumnNumber)
+                    rowNumber.Key,
+                    1,
+                    rowNumber.Key,
+                    context.CellValuesRange.RangeAddress.LastAddress.ColumnNumber)
                 .Style
                 .Border.SetTopBorder(borderStyle);
         }
@@ -346,8 +373,8 @@ internal static class AxisMapXlsxWriter
         var map = context.Map;
 
         var cell = context.CellValuesRange.Cell(
-            1 + (cellIndex / map.AxesHorizontalBoundCountsAggregateMultiply),
-            1 + (cellIndex % map.AxesHorizontalBoundCountsAggregateMultiply));
+            1 + cellIndex / map.AxesHorizontalBoundCountsAggregateMultiply,
+            1 + cellIndex % map.AxesHorizontalBoundCountsAggregateMultiply);
 
         object cellValue = map.GetCellValue(cellIndex)!;
 
@@ -411,8 +438,12 @@ internal static class AxisMapXlsxWriter
     private static void WriteCellWholeNumberValidation<T>(IXLDataValidation validation)
         where T : struct, IMinMaxValue<T>, INumber<T>
     {
-        validation.WholeNumber.Between(T.MinValue.ToString(null, InvariantCulture), T.MaxValue.ToString(null, InvariantCulture));
-        validation.ErrorMessage = string.Create(InvariantCulture, $"Please enter a whole number between {T.MinValue:N0} and {T.MaxValue:N0}.");
+        validation.WholeNumber.Between(
+            T.MinValue.ToString(null, InvariantCulture),
+            T.MaxValue.ToString(null, InvariantCulture));
+        validation.ErrorMessage = string.Create(
+            InvariantCulture,
+            $"Please enter a whole number between {T.MinValue:N0} and {T.MaxValue:N0}.");
     }
 
     private static void WriteCellDecimalValidation(IXLDataValidation validation)
@@ -424,7 +455,9 @@ internal static class AxisMapXlsxWriter
     private static void WriteCellTextValidation(IXLDataValidation validation)
     {
         validation.TextLength.EqualOrLessThan(_textLengthMax);
-        validation.ErrorMessage = string.Create(InvariantCulture, $"Please enter text up to {_textLengthMax:N0} characters in length.");
+        validation.ErrorMessage = string.Create(
+            InvariantCulture,
+            $"Please enter text up to {_textLengthMax:N0} characters in length.");
     }
 
     // While double (which Excel uses) can technically store a greater range, this is Excel's hard limit,
@@ -436,7 +469,8 @@ internal static class AxisMapXlsxWriter
     {
         var cellValuesRange = context.CellValuesRange;
 
-        string isInvalidPredicate = GetIsInvalidPredicate(context.Map.CellValueType, cellValuesRange.FirstCell().Address);
+        string isInvalidPredicate =
+            GetIsInvalidPredicate(context.Map.CellValueType, cellValuesRange.FirstCell().Address);
 
         cellValuesRange.AddConditionalFormat()
             .WhenIsTrue(isInvalidPredicate)
@@ -500,7 +534,9 @@ internal static class AxisMapXlsxWriter
         string.Create(InvariantCulture, $"COUNTIF({{0}}, \">{T.MaxValue}\") <> 0")
     ];
 
-    private const string _isInvalidBoolPredicateFormat = "COUNTIF({0}, \"<>\") <> (COUNTIF({0}, TRUE) + COUNTIF({0}, FALSE))";
+    private const string _isInvalidBoolPredicateFormat =
+        "COUNTIF({0}, \"<>\") <> (COUNTIF({0}, TRUE) + COUNTIF({0}, FALSE))";
+
     private const string _isInvalidNumberPredicateFormat = "COUNTIF({0}, \"<>\") <> COUNT({0})";
     private const string _isInvalidStringPredicateFormat = "FALSE";
 

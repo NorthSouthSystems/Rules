@@ -16,10 +16,14 @@ public class T_AxisMap
             var (boundses, axes) = FuzzAxes();
             var (cellValueType, inputs) = FuzzInput.Construct(boundses);
 
-            byte cellValueScaleForFormatting = cellValueType.IsFloatingPoint() ? (byte)15 : (byte)0; // Only relevant for Excel UI.
+            byte cellValueScaleForFormatting =
+                cellValueType.IsFloatingPoint() ? (byte)15 : (byte)0; // Only relevant for Excel UI.
 
-            var tempMap = AxisMap.ParseValidateAndConstructFromTemplate(cellValueType, axes,
-                cellValueScaleForFormatting, ImmutableDictionary<string, object>.Empty);
+            var tempMap = AxisMap.ParseValidateAndConstructFromTemplate(
+                cellValueType,
+                axes,
+                cellValueScaleForFormatting,
+                ImmutableDictionary<string, object>.Empty);
 
             tempMap.ThrowIfAxesInputTypeMismatches(typeof(FuzzInput));
 
@@ -28,8 +32,11 @@ public class T_AxisMap
                 .Where(iAndH => iAndH.Hash is not null)
                 .ToImmutableDictionary(iAndH => iAndH.Hash, iAndH => iAndH.Input.CellValue);
 
-            var map = AxisMap.ParseValidateAndConstructFromTemplate(cellValueType, axes,
-                cellValueScaleForFormatting, cellValuesByAxesBoundsHashBase64);
+            var map = AxisMap.ParseValidateAndConstructFromTemplate(
+                cellValueType,
+                axes,
+                cellValueScaleForFormatting,
+                cellValuesByAxesBoundsHashBase64);
 
             map.ThrowIfAxesInputTypeMismatches(typeof(FuzzInput));
 
@@ -44,9 +51,10 @@ public class T_AxisMap
                 {
                     var result = roundTripMap.LookupCellValue(input);
 
-                    result.Status.Should().Be(input.CellValue is null
-                        ? AxisMapLookupCellValueStatus.CellIsNullOrWhiteSpace
-                        : AxisMapLookupCellValueStatus.Success);
+                    result.Status.Should().Be(
+                        input.CellValue is null
+                            ? AxisMapLookupCellValueStatus.CellIsNullOrWhiteSpace
+                            : AxisMapLookupCellValueStatus.Success);
 
                     if (input.CellValue is not null)
                         result.Value.Should().Be(input.CellValue);
@@ -80,7 +88,7 @@ public class T_AxisMap
         int verticalAxesCount = axesCount - horizontalAxesCount;
 
         horizontalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax); // Sanity
-        verticalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax);   // Sanity
+        verticalAxesCount.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax); // Sanity
 
         var boundses = new List<ImmutableArray<object>>(axesCount);
         var axes = new List<Axis>(axesCount);
@@ -92,8 +100,11 @@ public class T_AxisMap
             var bounds = FuzzInput.GetBounds(boundType, suggestedBoundCount);
             var boundStrings = bounds.Select(b => b.ToString());
 
-            var axis = Axis.ParseValidateAndConstruct(boundType, FuzzInput.BoundTypeToPropertyName(boundType),
-                horizontalAxesCount > 0, horizontalAxesCount > 0 ? --horizontalAxesCount : --verticalAxesCount,
+            var axis = Axis.ParseValidateAndConstruct(
+                boundType,
+                FuzzInput.BoundTypeToPropertyName(boundType),
+                horizontalAxesCount > 0,
+                horizontalAxesCount > 0 ? --horizontalAxesCount : --verticalAxesCount,
                 [.. boundStrings]);
 
             boundses.Add(bounds);
@@ -138,7 +149,7 @@ public class T_AxisMap
                     .Select(_ => selector())
                     .Distinct()
                     .Take(suggestedCount) // Take before OrderBy else we'd be ordering 2B items.
-                    .OrderBy(x => x)      // AxisNumeric BoundsNumeric must be ordered.
+                    .OrderBy(x => x) // AxisNumeric BoundsNumeric must be ordered.
             ];
         }
 
@@ -215,7 +226,8 @@ public class T_AxisMap
             else if (cellValueType == typeof(int)) CellValue = (int)Random.Shared.NextInt64();
             else if (cellValueType == typeof(long)) CellValue = GetRandomLongForExcel();
             else if (cellValueType == typeof(double)) CellValue = (double)GetRandomDecimalForExcel();
-            else if (cellValueType == typeof(decimal)) CellValue = GetRandomLongForExcel(); // Intentional; see comment above.
+            else if (cellValueType == typeof(decimal))
+                CellValue = GetRandomLongForExcel(); // Intentional; see comment above.
             else if (cellValueType == typeof(string)) CellValue = _boundStrings.Shuffle(Random.Shared).First();
             else throw new NotSupportedException(cellValueType.ToString());
         }

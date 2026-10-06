@@ -67,7 +67,10 @@ public class T_AxisMapTableReader_ParseValidateAndConstruct
     private const string VoidAreaContainsData = "Void area must not contain any data*";
 
     private const string AxisPropertyPathEmpty = "Axis property path must be non-null and non-whitespace*";
-    private const string AxisPropertyPathFollowersNotVoid = "Axis property path must be followed by void cells in its row or column*";
+
+    private const string AxisPropertyPathFollowersNotVoid =
+        "Axis property path must be followed by void cells in its row or column*";
+
     private const string UnableToConstructAxis = "Unable to construct Axis*";
 
     private const string InterBoundVoidCountsDisagree = "Axis and inter-bound void counts disagree*";

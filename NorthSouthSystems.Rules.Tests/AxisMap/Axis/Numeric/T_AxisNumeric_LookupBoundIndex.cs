@@ -1,6 +1,8 @@
 ﻿public partial class T_AxisNumeric_LookupBoundIndex
 {
-    private static void Test(ImmutableArray<string> boundsRaw, params IReadOnlyList<(int Value, int? ExpectedIndex)> testCases)
+    private static void Test(
+        ImmutableArray<string> boundsRaw,
+        params IReadOnlyList<(int Value, int? ExpectedIndex)> testCases)
     {
         Test_ValidateBookendManipulationPrereqs(boundsRaw, testCases);
 
@@ -15,7 +17,7 @@
 
             TestCore(
                 [SwapOp(true, boundsRaw[0]), .. boundsRaw],
-                [.. testCases.Select(tc => (tc.Value, tc.Value <= value ? 0 : (tc.ExpectedIndex + 1)))]);
+                [.. testCases.Select(tc => (tc.Value, tc.Value <= value ? 0 : tc.ExpectedIndex + 1))]);
         }
 
         while (nullCountFront > 0)
@@ -24,15 +26,15 @@
 
             Test(
                 [B("==", value), .. boundsRaw],
-                [.. testCases.Select(tc => (tc.Value, tc.Value == value ? 0 : (tc.ExpectedIndex + 1)))]);
+                [.. testCases.Select(tc => (tc.Value, tc.Value == value ? 0 : tc.ExpectedIndex + 1))]);
 
             TestCore(
                 [B("<", value), .. boundsRaw],
-                [.. testCases.Select(tc => (tc.Value, tc.Value < value ? 0 : (tc.ExpectedIndex + 1)))]);
+                [.. testCases.Select(tc => (tc.Value, tc.Value < value ? 0 : tc.ExpectedIndex + 1))]);
 
             TestCore(
                 [B("<=", value), .. boundsRaw],
-                [.. testCases.Select(tc => (tc.Value, tc.Value <= value ? 0 : (tc.ExpectedIndex + 1)))]);
+                [.. testCases.Select(tc => (tc.Value, tc.Value <= value ? 0 : tc.ExpectedIndex + 1))]);
 
             nullCountFront--;
         }
@@ -91,20 +93,25 @@
         static string B(string op, int value) => string.Create(InvariantCulture, $"{op} {value}");
     }
 
-    private static void Test(ImmutableArray<string> boundsRaw, params IEnumerable<(int? Value, int? ExpectedIndex)> testCases) =>
+    private static void Test(
+        ImmutableArray<string> boundsRaw,
+        params IEnumerable<(int? Value, int? ExpectedIndex)> testCases) =>
         TestCore(boundsRaw, testCases);
 
-    private static void TestCore<T>(ImmutableArray<string> boundsRaw, IEnumerable<(T Value, int? ExpectedIndex)> testCases)
+    private static void TestCore<T>(
+        ImmutableArray<string> boundsRaw,
+        IEnumerable<(T Value, int? ExpectedIndex)> testCases)
     {
         var expectedBoundToStrings = boundsRaw
-            .Select(br => br.Contains(' ') ? br : ("== " + br))
+            .Select(br => br.Contains(' ') ? br : "== " + br)
             .ToImmutableArray();
 
         T_Axis.LookupBoundIndex_Test(boundsRaw, expectedBoundToStrings, testCases);
     }
 
     private static void Test_ValidateBookendManipulationPrereqs(
-        IReadOnlyList<string> boundsRaw, IReadOnlyList<(int Value, int? ExpectedIndex)> testCases)
+        IReadOnlyList<string> boundsRaw,
+        IReadOnlyList<(int Value, int? ExpectedIndex)> testCases)
     {
         // We require all BoundStrings to be in ascending order. Ascending vs. descending is irrelevant to test
         // coverage because T_Axis.LookupBoundIndex_Test automatically performs a boundStrings "reverse" test.

@@ -59,7 +59,7 @@ internal class AxisMapCsvTable : IAxisMapTable
         // An AxisMap with only horizontal Axes and with no CellValues will have a "valid" blank row.
         // This requires conditional logic for rowsTrailingBlankCount and blankRowIndices.
         int rowPossiblyBlankIndex = keystone.VerticalAxesTypes.Length == 0
-            ? (2 * keystone.HorizontalAxesTypes.Length)
+            ? 2 * keystone.HorizontalAxesTypes.Length
             : -1;
 
         rowsTrailingBlankCount = Math.Min(rowsTrailingBlankCount, rowsRaw.Length - rowPossiblyBlankIndex - 1);
@@ -69,13 +69,16 @@ internal class AxisMapCsvTable : IAxisMapTable
             : rowsRaw;
 
         if (rows.Length == 0)
-            throw new ArgumentException("Csv must contain at least one non-empty non-whitespace row after the keystone.", nameof(csv));
+            throw new ArgumentException(
+                "Csv must contain at least one non-empty non-whitespace row after the keystone.",
+                nameof(csv));
 
         var blankRowIndices = rows
             .Select((row, index) => row.Any(string.IsNotNullAndNotWhiteSpace) ? -1 : index)
             .Where(index => index >= 0 && index != rowPossiblyBlankIndex);
 
-        ArgumentExceptionX.ThrowIfAny(blankRowIndices,
+        ArgumentExceptionX.ThrowIfAny(
+            blankRowIndices,
             "Rows with after keystone 0-based indices are completely empty or whitespace.",
             originalParamName: nameof(csv));
 
@@ -83,7 +86,8 @@ internal class AxisMapCsvTable : IAxisMapTable
             .Select((row, index) => row.Length == columnCount ? -1 : index)
             .Where(index => index >= 0);
 
-        ArgumentExceptionX.ThrowIfAny(invalidRowIndices,
+        ArgumentExceptionX.ThrowIfAny(
+            invalidRowIndices,
             "Rows with after keystone 0-based indices have invalid number of columns.",
             originalParamName: nameof(csv));
 

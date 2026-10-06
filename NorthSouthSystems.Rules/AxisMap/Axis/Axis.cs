@@ -35,24 +35,63 @@ public abstract partial class Axis : IMessagePackable
     public static MessagePackSerializer MessagePack => AxisMap.MessagePack;
 
     public static ImmutableHashSet<Type> SupportedBoundTypes { get; } =
-        [typeof(bool), typeof(short), typeof(int), typeof(long), /* NO! See comment above. typeof(double),*/ typeof(decimal), typeof(string)];
+    [
+        typeof(bool), typeof(short), typeof(int), typeof(long),
+        /* NO! See comment above. typeof(double),*/ typeof(decimal), typeof(string)
+    ];
 
-    internal static Axis ParseValidateAndConstruct(Type type,
-        string propertyPath, bool isOrientationHorizontal, int orientationRelativeIndex, ImmutableArray<string> boundsRaw)
+    internal static Axis ParseValidateAndConstruct(
+        Type type,
+        string propertyPath,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        ImmutableArray<string> boundsRaw)
     {
         try
         {
-            if (type == typeof(bool)) return AxisBool.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
-            else if (type == typeof(short)) return AxisNumeric<short>.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
-            else if (type == typeof(int)) return AxisNumeric<int>.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
-            else if (type == typeof(long)) return AxisNumeric<long>.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
-            else if (type == typeof(decimal)) return AxisNumeric<decimal>.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
-            else if (type == typeof(string)) return AxisString.ParseValidateAndConstruct(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundsRaw);
+            if (type == typeof(bool))
+                return AxisBool.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
+            else if (type == typeof(short))
+                return AxisNumeric<short>.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
+            else if (type == typeof(int))
+                return AxisNumeric<int>.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
+            else if (type == typeof(long))
+                return AxisNumeric<long>.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
+            else if (type == typeof(decimal))
+                return AxisNumeric<decimal>.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
+            else if (type == typeof(string))
+                return AxisString.ParseValidateAndConstruct(
+                    propertyPath,
+                    isOrientationHorizontal,
+                    orientationRelativeIndex,
+                    boundsRaw);
             else throw new NotSupportedException(type.ToString());
         }
         catch (Exception innerException)
         {
-            throw new ArgumentException(string.Create(InvariantCulture, $"Unable to construct Axis. Axis Property Path: {propertyPath}"), innerException);
+            throw new ArgumentException(
+                string.Create(InvariantCulture, $"Unable to construct Axis. Axis Property Path: {propertyPath}"),
+                innerException);
         }
     }
 
@@ -74,9 +113,14 @@ public abstract partial class Axis : IMessagePackable
         OrientationRelativeIndex = orientationRelativeIndex;
     }
 
-    [Key(1)] public string PropertyPath { get; }
-    [Key(2)] public bool IsOrientationHorizontal { get; }
-    [Key(3)] public int OrientationRelativeIndex { get; }
+    [Key(1)]
+    public string PropertyPath { get; }
+
+    [Key(2)]
+    public bool IsOrientationHorizontal { get; }
+
+    [Key(3)]
+    public int OrientationRelativeIndex { get; }
 
     internal abstract Type BoundType { get; }
     internal abstract int BoundCount { get; }
@@ -110,6 +154,8 @@ public abstract partial class Axis : IMessagePackable
 
     // This likely "wastes" performance due to being unneccessarily long, but it will drive the chance
     // of an inadvertent "Concat(PropertyPath, Bound) == Concat(OtherPropertyPath, OtherBound) to 0%.
-    private static readonly string _hashDelimiter = string.Create(InvariantCulture, $"\n{nameof(AxisMap)}.{nameof(_hashDelimiter)}\n");
+    private static readonly string _hashDelimiter =
+        string.Create(InvariantCulture, $"\n{nameof(AxisMap)}.{nameof(_hashDelimiter)}\n");
+
     private static readonly byte[] _hashDelimiterBytes = Encoding.UTF8.GetBytes(_hashDelimiter);
 }

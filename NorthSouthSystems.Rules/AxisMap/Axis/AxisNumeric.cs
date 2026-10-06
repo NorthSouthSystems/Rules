@@ -13,11 +13,14 @@ public sealed class AxisNumeric<TBoundValue> : Axis
     where TBoundValue : struct, INumber<TBoundValue>
 {
     internal static AxisNumeric<TBoundValue> ParseValidateAndConstruct(
-        string propertyPath, bool isOrientationHorizontal, int orientationRelativeIndex,
+        string propertyPath,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
         ImmutableArray<string> boundNumericsRaw)
     {
         if (!SupportedBoundTypes.Contains(typeof(TBoundValue)))
-            throw new NotSupportedException(string.Create(InvariantCulture, $"{nameof(TBoundValue)} == {typeof(TBoundValue)}"));
+            throw new NotSupportedException(
+                string.Create(InvariantCulture, $"{nameof(TBoundValue)} == {typeof(TBoundValue)}"));
 
         Validate(propertyPath, orientationRelativeIndex, boundNumericsRaw);
 
@@ -45,8 +48,12 @@ public sealed class AxisNumeric<TBoundValue> : Axis
     }
 
     [ConstructorShape]
-    private AxisNumeric(string propertyPath, bool isOrientationHorizontal, int orientationRelativeIndex,
-        ImmutableArray<BoundNumeric<TBoundValue>> boundNumerics, byte boundScale) :
+    private AxisNumeric(
+        string propertyPath,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        ImmutableArray<BoundNumeric<TBoundValue>> boundNumerics,
+        byte boundScale) :
         base(propertyPath, isOrientationHorizontal, orientationRelativeIndex)
     {
         BoundNumerics = boundNumerics;
@@ -56,10 +63,14 @@ public sealed class AxisNumeric<TBoundValue> : Axis
         _boundNumberFormat = string.Create(InvariantCulture, $"N{boundScale}");
     }
 
-    [Key(5)] public ImmutableArray<BoundNumeric<TBoundValue>> BoundNumerics { get; }
+    [Key(5)]
+    public ImmutableArray<BoundNumeric<TBoundValue>> BoundNumerics { get; }
+
     private readonly bool _boundValueIsAscending;
 
-    [Key(6)] public byte BoundScale { get; }
+    [Key(6)]
+    public byte BoundScale { get; }
+
     private readonly string _boundNumberFormat;
 
     internal override Type BoundType => typeof(TBoundValue);
@@ -140,31 +151,34 @@ public sealed class AxisNumeric<TBoundValue> : Axis
         var bound = BoundNumerics[boundIndex];
 
         if (bound.Operator == BoundNumericOperator.EqualTo)
-        {
             AppendBoundDescription(builder, _boundNumberFormat, bound);
-        }
         else if (_boundValueIsAscending == bound.Operator.IsInGreaterThanFamily())
         {
-            if ((boundIndex + 1) >= BoundCount)
+            if (boundIndex + 1 >= BoundCount)
                 AppendBoundDescription(builder, _boundNumberFormat, bound);
             else
                 AppendBoundDescription(builder, _boundNumberFormat, bound, BoundNumerics[boundIndex + 1]);
         }
         else
         {
-            if ((boundIndex - 1) < 0)
+            if (boundIndex - 1 < 0)
                 AppendBoundDescription(builder, _boundNumberFormat, bound);
             else
                 AppendBoundDescription(builder, _boundNumberFormat, bound, BoundNumerics[boundIndex - 1]);
         }
     }
 
-    private static void AppendBoundDescription(StringBuilder builder, string boundNumberFormat,
+    private static void AppendBoundDescription(
+        StringBuilder builder,
+        string boundNumberFormat,
         BoundNumeric<TBoundValue> bound) =>
         builder.Append(bound.ToString(boundNumberFormat));
 
-    private static void AppendBoundDescription(StringBuilder builder, string boundNumberFormat,
-        BoundNumeric<TBoundValue> bound, BoundNumeric<TBoundValue> sibling)
+    private static void AppendBoundDescription(
+        StringBuilder builder,
+        string boundNumberFormat,
+        BoundNumeric<TBoundValue> bound,
+        BoundNumeric<TBoundValue> sibling)
     {
         bool boundInclusive = bound.Operator.IsInEqualToFamily();
         bool siblingInclusive = !sibling.Operator.IsInEqualToFamily();
@@ -198,10 +212,14 @@ public sealed class AxisNumeric<TBoundValue> : Axis
             if (lesserValue == greaterValue)
                 builder.Append(InvariantCulture, $"== {lesserValue.ToString(boundNumberFormat, InvariantCulture)}");
             else
-                builder.Append(InvariantCulture, $"[{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}]");
+                builder.Append(
+                    InvariantCulture,
+                    $"[{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}]");
         }
         else
-            builder.Append(InvariantCulture, $"{(lesserInclusive ? '[' : '(')}{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}{(greaterInclusive ? ']' : ')')}");
+            builder.Append(
+                InvariantCulture,
+                $"{(lesserInclusive ? '[' : '(')}{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}{(greaterInclusive ? ']' : ')')}");
     }
 
     protected override void AppendBoundHash(XxHash128 hasher, int boundIndex) =>

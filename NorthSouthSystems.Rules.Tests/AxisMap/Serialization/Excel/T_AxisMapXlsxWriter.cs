@@ -10,22 +10,41 @@ using static T_AxisMapXlsxX;
 public class T_AxisMapXlsxWriter
 {
     // 1 x 0
-    [Fact] public Task OneHCellDouble() => Test(_oneHCellDouble);
-    [Fact] public Task OneVCellInt() => Test(_oneVCellInt);
+    [Fact]
+    public Task OneHCellDouble() => Test(_oneHCellDouble);
+
+    [Fact]
+    public Task OneVCellInt() => Test(_oneVCellInt);
+
     // 2 x 0
-    [Fact] public Task TwoHCellShort() => Test(_twoHCellShort);
-    [Fact] public Task TwoVCellLong() => Test(_twoVCellLong);
+    [Fact]
+    public Task TwoHCellShort() => Test(_twoHCellShort);
+
+    [Fact]
+    public Task TwoVCellLong() => Test(_twoVCellLong);
+
     // 1 x 1
-    [Fact] public Task OneHOneVCellBool() => Test(_oneHOneVCellBool);
+    [Fact]
+    public Task OneHOneVCellBool() => Test(_oneHOneVCellBool);
+
     // 2 x 1
-    [Fact] public Task TwoHOneVCellDecimal() => Test(_twoHOneVCellDecimal);
-    [Fact] public Task OneHTwoVCellString() => Test(_oneHTwoVCellString);
+    [Fact]
+    public Task TwoHOneVCellDecimal() => Test(_twoHOneVCellDecimal);
+
+    [Fact]
+    public Task OneHTwoVCellString() => Test(_oneHTwoVCellString);
+
     // 2 x 2
-    [Fact] public Task TwoHTwoVCellBool() => Test(_twoHTwoVCellBool);
+    [Fact]
+    public Task TwoHTwoVCellBool() => Test(_twoHTwoVCellBool);
+
     // 3 x 3
-    [Fact] public Task ThreeHThreeVCellDecimal() => Test(_threeHThreeVCellDecimal);
+    [Fact]
+    public Task ThreeHThreeVCellDecimal() => Test(_threeHThreeVCellDecimal);
+
     // 4 x 3
-    [Fact] public Task FourHThreeVCellString() => Test(_fourHThreeVCellString);
+    [Fact]
+    public Task FourHThreeVCellString() => Test(_fourHThreeVCellString);
 
     [Theory]
     [MemberData(nameof(Templates))]

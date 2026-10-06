@@ -9,7 +9,9 @@ namespace NorthSouthSystems.Rules;
 public class AxisMap<TCellValue> : AxisMap
 {
     internal static AxisMap<TCellValue> ParseValidateAndConstructFromTable(
-        ImmutableArray<Axis> axes, byte cellValueScaleForFormatting, ImmutableArray<object?> cellValuesRaw)
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
+        ImmutableArray<object?> cellValuesRaw)
     {
         Validate(axes, cellValueScaleForFormatting);
 
@@ -25,7 +27,9 @@ public class AxisMap<TCellValue> : AxisMap
     }
 
     internal static AxisMap<TCellValue> ParseValidateAndConstructFromTemplate(
-        ImmutableArray<Axis> axes, byte cellValueScaleForFormatting, ImmutableDictionary<string, object> cellValuesRawByAxesBoundsHashBase64)
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
+        ImmutableDictionary<string, object> cellValuesRawByAxesBoundsHashBase64)
     {
         Validate(axes, cellValueScaleForFormatting);
 
@@ -35,7 +39,8 @@ public class AxisMap<TCellValue> : AxisMap
     private static void Validate(ImmutableArray<Axis> axes, byte cellValueScaleForFormatting)
     {
         if (!SupportedCellValueTypes.Contains(typeof(TCellValue)))
-            throw new NotSupportedException(string.Create(InvariantCulture, $"{nameof(TCellValue)} == {typeof(TCellValue)}"));
+            throw new NotSupportedException(
+                string.Create(InvariantCulture, $"{nameof(TCellValue)} == {typeof(TCellValue)}"));
 
         // Short-circuits AxesOrientationCountMax validation.
         Throw.IfEqual(axes.IsDefault, true);
@@ -56,7 +61,8 @@ public class AxisMap<TCellValue> : AxisMap
             .Where(oc => oc.Value > AxesOrientationCountMax)
             .Select(oc => oc.Key ? "Horizontal" : "Vertical");
 
-        ArgumentExceptionX.ThrowIfAny(axesOrientationCountExceeded,
+        ArgumentExceptionX.ThrowIfAny(
+            axesOrientationCountExceeded,
             "Axes count for orientation exceeded.",
             originalParamName: nameof(axes));
     }
@@ -82,7 +88,8 @@ public class AxisMap<TCellValue> : AxisMap
             .Select(a => a.PropertyPath)
             .Duplicates();
 
-        ArgumentExceptionX.ThrowIfAny(axesDuplicatePropertyPaths,
+        ArgumentExceptionX.ThrowIfAny(
+            axesDuplicatePropertyPaths,
             "Axes must have unique PropertyPaths.",
             originalParamName: nameof(axes));
     }
@@ -92,8 +99,12 @@ public class AxisMap<TCellValue> : AxisMap
         int axesCellValuesCount = BoundCountsAggregateMultiply(axes);
 
         if (axesCellValuesCount != cellValuesCount)
+        {
             throw new ArgumentException(
-                string.Create(InvariantCulture, $"Axes calculation and CellValues count disagree. Expected: {axesCellValuesCount}, Actual: {cellValuesCount}"));
+                string.Create(
+                    InvariantCulture,
+                    $"Axes calculation and CellValues count disagree. Expected: {axesCellValuesCount}, Actual: {cellValuesCount}"));
+        }
     }
 
     private static (ImmutableArray<TCellValue> CellValues, ImmutableArray<bool> CellIsNullOrWhiteSpaceMask)
@@ -150,15 +161,20 @@ public class AxisMap<TCellValue> : AxisMap
     }
 
     [ConstructorShape]
-    private AxisMap(ImmutableArray<Axis> axes, byte cellValueScaleForFormatting,
-        ImmutableArray<TCellValue> cellValues, ImmutableArray<bool> cellIsNullOrWhiteSpaceMask)
+    private AxisMap(
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
+        ImmutableArray<TCellValue> cellValues,
+        ImmutableArray<bool> cellIsNullOrWhiteSpaceMask)
         : base(axes, cellValueScaleForFormatting)
     {
         CellValues = cellValues;
         CellIsNullOrWhiteSpaceMask = cellIsNullOrWhiteSpaceMask;
     }
 
-    private AxisMap(ImmutableArray<Axis> axes, byte cellValueScaleForFormatting,
+    private AxisMap(
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
         ImmutableDictionary<string, object> cellValuesRawByAxesBoundsHashBase64)
         : base(axes, cellValueScaleForFormatting)
     {
@@ -175,8 +191,11 @@ public class AxisMap<TCellValue> : AxisMap
     // 2. To increase density for large AxisMaps. Nullable<> requires a struct that contains a
     //    bool indicating null or not. Due to CPU alignment requirements, in most cases, that bool
     //    requires 4 (8?) bytes.
-    [Key(3)] public ImmutableArray<TCellValue> CellValues { get; }
-    [Key(4)] public ImmutableArray<bool> CellIsNullOrWhiteSpaceMask { get; }
+    [Key(3)]
+    public ImmutableArray<TCellValue> CellValues { get; }
+
+    [Key(4)]
+    public ImmutableArray<bool> CellIsNullOrWhiteSpaceMask { get; }
 
     public override Type CellValueType => typeof(TCellValue);
 

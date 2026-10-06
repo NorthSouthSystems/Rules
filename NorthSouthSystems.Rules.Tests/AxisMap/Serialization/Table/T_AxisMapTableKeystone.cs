@@ -2,7 +2,8 @@
 {
     [Theory]
     [MemberData(nameof(ParseTestCases))]
-    public void ParseCsvLine(string keystone,
+    public void ParseCsvLine(
+        string keystone,
         Type[] expectedVerticalAxesTypes,
         Type[] expectedHorizontalAxesTypes,
         Type expectedCellValueType)
@@ -66,7 +67,8 @@
         foreach (string invalid in new[] { "INVALID\n", "INVALID\r\n", "invalid,\n", "invalid,\r\n" })
         {
             act = () => AxisMapTableKeystone.ParseCsvLine(invalid);
-            act.Should().ThrowExactly<ArgumentException>().WithMessage("Keystone indicates that Table contains invalid cell value*");
+            act.Should().ThrowExactly<ArgumentException>()
+                .WithMessage("Keystone indicates that Table contains invalid cell value*");
         }
 
         foreach (string keystoneIsBlank in new[] { ",\n", ",\r\n", " ,\n", " ,\r\n" })
@@ -75,10 +77,12 @@
             act.Should().ThrowExactly<ArgumentException>().WithMessage("Keystone is blank*");
         }
 
-        foreach (string followedNotEmpty in new[] { "keystone,a\n", "keystone,a\r\n", "keystone, \n", "keystone, \r\n" })
+        foreach (string followedNotEmpty in new[]
+                     { "keystone,a\n", "keystone,a\r\n", "keystone, \n", "keystone, \r\n" })
         {
             act = () => AxisMapTableKeystone.ParseCsvLine(followedNotEmpty);
-            act.Should().ThrowExactly<ArgumentException>().WithMessage("Keystone must be followed by empty cells on its row*");
+            act.Should().ThrowExactly<ArgumentException>()
+                .WithMessage("Keystone must be followed by empty cells on its row*");
         }
     }
 
@@ -91,7 +95,8 @@
     // System.Runtime.Serialization.SerializationException: Type 'Microsoft.CodeAnalysis.CSharp.Symbols.PublicModel.NonErrorNamedTypeSymbol' in Assembly 'Microsoft.CodeAnalysis.CSharp, Version=4.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' is not marked as serializable.
     [Theory]
     [MemberData(nameof(ParseTestCases))]
-    public void Parse(string keystone,
+    public void Parse(
+        string keystone,
         Type[] expectedVerticalAxesTypes,
         Type[] expectedHorizontalAxesTypes,
         Type expectedCellValueType)
@@ -127,7 +132,11 @@
     {
         Action act;
 
-        foreach (string improper in new[] { "[int] [] == string", "[int] == string", "[int x ] == string", "[int] x [] = string", "[int] x [] ==", "[int] x []" })
+        foreach (string improper in new[]
+                 {
+                     "[int] [] == string", "[int] == string", "[int x ] == string", "[int] x [] = string",
+                     "[int] x [] ==", "[int] x []"
+                 })
         {
             act = () => AxisMapTableKeystone.Parse(improper);
             act.Should().ThrowExactly<ArgumentException>().WithMessage("Keystone not properly specified*");
@@ -144,50 +153,43 @@
     // IN ORDER TO ALIGN WITH HOW KEYSTONE IS WRITTEN IN THE TABLE!
     public static IEnumerable<TheoryDataRow<string, Type[], Type[], Type>> ParseTestCases()
     {
-        yield return new
-        (
+        yield return new(
             "[int] x [] == string",
             [typeof(int)],
             [],
             typeof(string)
         );
-        yield return new
-        (
+        yield return new(
             "[] x [decimal] == string",
             [],
             [typeof(decimal)],
             typeof(string)
         );
-        yield return new
-        (
+        yield return new(
             "[int] x [decimal] == string",
             [typeof(int)],
             [typeof(decimal)],
             typeof(string)
         );
-        yield return new
-        (
+        yield return new(
             "[int] x [decimal, bool] == string",
             [typeof(int)],
             [typeof(decimal), typeof(bool)],
             typeof(string)
         );
-        yield return new
-        (
+        yield return new(
             "[int, string] x [decimal] == double",
             [typeof(int), typeof(string)],
             [typeof(decimal)],
             typeof(double)
         );
-        yield return new
-        (
+        yield return new(
             "[int, string] x [decimal, bool] == double",
             [typeof(int), typeof(string)],
             [typeof(decimal), typeof(bool)],
             typeof(double)
         );
-        yield return new
-        (
+        yield return new(
             "[int, string, short] x [decimal, bool, long] == double",
             [typeof(int), typeof(string), typeof(short)],
             [typeof(decimal), typeof(bool), typeof(long)],

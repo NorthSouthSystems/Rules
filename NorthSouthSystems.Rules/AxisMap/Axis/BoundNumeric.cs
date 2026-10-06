@@ -10,7 +10,9 @@ namespace NorthSouthSystems.Rules;
 internal static class BoundNumericOperatorExtensions
 {
     internal static bool IsInEqualToFamily(this BoundNumericOperator @operator) =>
-        @operator is BoundNumericOperator.EqualTo or BoundNumericOperator.GreaterThanOrEqualTo or BoundNumericOperator.LessThanOrEqualTo;
+        @operator is BoundNumericOperator.EqualTo
+            or BoundNumericOperator.GreaterThanOrEqualTo
+            or BoundNumericOperator.LessThanOrEqualTo;
 
     internal static bool IsInGreaterThanFamily(this BoundNumericOperator @operator) =>
         @operator is BoundNumericOperator.GreaterThan or BoundNumericOperator.GreaterThanOrEqualTo;
@@ -59,7 +61,10 @@ internal enum BoundNumericsValidationError
 internal static class BoundNumeric
 {
     internal const NumberStyles ParseIntegralNumberStyles =
-        NumberStyles.AllowLeadingSign | NumberStyles.AllowLeadingWhite | NumberStyles.AllowThousands | NumberStyles.AllowTrailingWhite;
+        NumberStyles.AllowLeadingSign
+        | NumberStyles.AllowLeadingWhite
+        | NumberStyles.AllowThousands
+        | NumberStyles.AllowTrailingWhite;
 }
 
 public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoundValue>>
@@ -114,8 +119,11 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
         Value = value;
     }
 
-    [Key(0)] public BoundNumericOperator Operator { get; }
-    [Key(1)] public TBoundValue Value { get; }
+    [Key(0)]
+    public BoundNumericOperator Operator { get; }
+
+    [Key(1)]
+    public TBoundValue Value { get; }
 
     public override string ToString() =>
         string.Create(InvariantCulture, $"{Operator.ToStringSyntax()} {Value}");
@@ -130,8 +138,11 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
 
     public override int GetHashCode() => HashCode.Combine(Operator, Value);
 
-    public static bool operator ==(BoundNumeric<TBoundValue> left, BoundNumeric<TBoundValue> right) => left.Equals(right);
-    public static bool operator !=(BoundNumeric<TBoundValue> left, BoundNumeric<TBoundValue> right) => !left.Equals(right);
+    public static bool operator ==(BoundNumeric<TBoundValue> left, BoundNumeric<TBoundValue> right) =>
+        left.Equals(right);
+
+    public static bool operator !=(BoundNumeric<TBoundValue> left, BoundNumeric<TBoundValue> right) =>
+        !left.Equals(right);
 
     internal void AppendHash(XxHash128 hasher)
     {
@@ -160,7 +171,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
         for (int boundIndex = 1; boundIndex < boundNumerics.Length; boundIndex++)
         {
             var errors = boundNumerics[boundIndex - 1].ValidateNextSiblingPhase1Mixed(
-                boundNumerics[boundIndex], ref isAscending);
+                boundNumerics[boundIndex],
+                ref isAscending);
 
             AddErrorBoundIndices(errors, boundIndex);
         }
@@ -170,7 +182,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
         for (int boundIndex = 1; boundIndex < boundNumerics.Length; boundIndex++)
         {
             var errors = boundNumerics[boundIndex - 1].ValidateNextSiblingPhase2Overlapping(
-                boundNumerics[boundIndex], isAscending);
+                boundNumerics[boundIndex],
+                isAscending);
 
             AddErrorBoundIndices(errors, boundIndex);
         }
@@ -182,7 +195,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
     // calculation that takes place during Phase 1. Furthermore, if Phase 1 has errors, Phase 2 errors will
     // only add noise, so we will skip Phase 2 in such cases.
     private readonly List<BoundNumericsValidationError>? ValidateNextSiblingPhase1Mixed(
-        BoundNumeric<TBoundValue> nextSibling, ref bool? isAscending)
+        BoundNumeric<TBoundValue> nextSibling,
+        ref bool? isAscending)
     {
         List<BoundNumericsValidationError>? errors = null;
 
@@ -195,7 +209,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
     }
 
     private readonly List<BoundNumericsValidationError>? ValidateNextSiblingPhase2Overlapping(
-        BoundNumeric<TBoundValue> nextSibling, bool? isAscending)
+        BoundNumeric<TBoundValue> nextSibling,
+        bool? isAscending)
     {
         List<BoundNumericsValidationError>? errors = null;
 
@@ -214,7 +229,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
     }
 
     private static bool IsNextSiblingMixedAscendingAndDescending(
-        ref bool? isAscending, int compareTo)
+        ref bool? isAscending,
+        int compareTo)
     {
         if (compareTo == 0)
             return false;
@@ -227,12 +243,15 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
     }
 
     private readonly bool IsNextSiblingOverlappingGreaterThanAndLessThan(
-        BoundNumeric<TBoundValue> nextSibling, int compareTo) =>
+        BoundNumeric<TBoundValue> nextSibling,
+        int compareTo) =>
         (compareTo < 0 && Operator.IsInGreaterThanFamily() && nextSibling.Operator.IsInLessThanFamily())
         || (compareTo > 0 && Operator.IsInLessThanFamily() && nextSibling.Operator.IsInGreaterThanFamily());
 
     private readonly bool IsNextSiblingOverlappingTwins(
-        BoundNumeric<TBoundValue> nextSibling, bool? isAscending, int compareTo)
+        BoundNumeric<TBoundValue> nextSibling,
+        bool? isAscending,
+        int compareTo)
     {
         if (compareTo != 0)
             return false;
@@ -245,7 +264,8 @@ public readonly struct BoundNumeric<TBoundValue> : IEquatable<BoundNumeric<TBoun
     }
 
     private readonly bool IsNextSiblingOverlappingOneOffs(
-        BoundNumeric<TBoundValue> nextSibling, int compareTo)
+        BoundNumeric<TBoundValue> nextSibling,
+        int compareTo)
     {
         if (compareTo == 0 || !typeof(TBoundValue).IsIntegral())
             return false;

@@ -10,7 +10,9 @@ namespace NorthSouthSystems.Rules;
 public sealed class AxisBool : Axis
 {
     internal static AxisBool ParseValidateAndConstruct(
-        string propertyPath, bool isOrientationHorizontal, int orientationRelativeIndex,
+        string propertyPath,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
         ImmutableArray<string> boundBoolsRaw)
     {
         Validate(propertyPath, orientationRelativeIndex, boundBoolsRaw);
@@ -18,18 +20,25 @@ public sealed class AxisBool : Axis
 
         var boundBools = boundBoolsRaw.Select(bool.Parse).ToImmutableArray();
 
-        ArgumentExceptionX.ThrowIfAny(boundBools.Duplicates(),
-            "Duplicate bounds not allowed.", originalParamName: nameof(boundBools));
+        ArgumentExceptionX.ThrowIfAny(
+            boundBools.Duplicates(),
+            "Duplicate bounds not allowed.",
+            originalParamName: nameof(boundBools));
 
         return new(propertyPath, isOrientationHorizontal, orientationRelativeIndex, boundBools[0]);
     }
 
     [ConstructorShape]
-    private AxisBool(string propertyPath, bool isOrientationHorizontal, int orientationRelativeIndex, bool boundBoolIndex0)
+    private AxisBool(
+        string propertyPath,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        bool boundBoolIndex0)
         : base(propertyPath, isOrientationHorizontal, orientationRelativeIndex) =>
         BoundBoolIndex0 = boundBoolIndex0;
 
-    [Key(4)] public bool BoundBoolIndex0 { get; }
+    [Key(4)]
+    public bool BoundBoolIndex0 { get; }
 
     internal override Type BoundType => typeof(bool);
     internal override int BoundCount => 2;

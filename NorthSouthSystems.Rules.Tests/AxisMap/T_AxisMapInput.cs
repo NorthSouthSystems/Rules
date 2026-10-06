@@ -42,16 +42,16 @@ internal sealed class T_AxisMapInput
 
     internal static T_AxisMapInput ConstructWithProperty(Type t, object value)
     {
-        if (t == typeof(bool)) return new T_AxisMapInput() { TheBool = (bool)value };
-        else if (t == typeof(bool?)) return new T_AxisMapInput() { TheBoolNullable = (bool?)value };
-        else if (t == typeof(short)) return new T_AxisMapInput() { TheShort = (short)value };
-        else if (t == typeof(int)) return new T_AxisMapInput() { TheInt = (int)value };
-        else if (t == typeof(int?)) return new T_AxisMapInput() { TheIntNullable = (int?)value };
-        else if (t == typeof(long)) return new T_AxisMapInput() { TheLong = (long)value };
-        else if (t == typeof(decimal)) return new T_AxisMapInput() { TheDecimal = (decimal)value };
-        else if (t == typeof(string)) return new T_AxisMapInput() { TheString = (string)value };
-        else if (t == typeof(T_AxisMapInputEnum)) return new T_AxisMapInput() { TheEnum = (T_AxisMapInputEnum)value };
-        else if (t == typeof(T_AxisMapInputEnum?)) return new T_AxisMapInput() { TheEnumNullable = (T_AxisMapInputEnum?)value };
+        if (t == typeof(bool)) return new() { TheBool = (bool)value };
+        else if (t == typeof(bool?)) return new() { TheBoolNullable = (bool?)value };
+        else if (t == typeof(short)) return new() { TheShort = (short)value };
+        else if (t == typeof(int)) return new() { TheInt = (int)value };
+        else if (t == typeof(int?)) return new() { TheIntNullable = (int?)value };
+        else if (t == typeof(long)) return new() { TheLong = (long)value };
+        else if (t == typeof(decimal)) return new() { TheDecimal = (decimal)value };
+        else if (t == typeof(string)) return new() { TheString = (string)value };
+        else if (t == typeof(T_AxisMapInputEnum)) return new() { TheEnum = (T_AxisMapInputEnum)value };
+        else if (t == typeof(T_AxisMapInputEnum?)) return new() { TheEnumNullable = (T_AxisMapInputEnum?)value };
         else throw new NotSupportedException(t.ToString());
     }
 }

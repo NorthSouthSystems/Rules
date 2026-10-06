@@ -112,5 +112,8 @@ internal class AxisMapXlsxTable : IAxisMapTable
     }
 
     private static NotSupportedException CellDataTypeNotSupported(IXLCell cell) =>
-        new(string.Create(InvariantCulture, $"Row Num: {cell.Address.RowNumber}, Col Num: {cell.Address.ColumnNumber}, Data Type: {cell.DataType}"));
+        new(
+            string.Create(
+                InvariantCulture,
+                $"Row Num: {cell.Address.RowNumber}, Col Num: {cell.Address.ColumnNumber}, Data Type: {cell.DataType}"));
 }

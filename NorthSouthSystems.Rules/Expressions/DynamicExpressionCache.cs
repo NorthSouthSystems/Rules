@@ -12,6 +12,7 @@ public class DynamicExpressionCache
     private readonly ParsingConfig? _parsingConfig;
 
     private readonly ConcurrentDictionary<CacheKey, Lazy<Delegate>> _cache = new();
+
     private record struct CacheKey(Type InputType, Type ResultType, string ExpressionRaw);
 
     public TResult Evaluate<TInput, TResult>(TInput input, string expressionRaw)
@@ -44,8 +45,14 @@ public class DynamicExpressionCache
         Throw.IfNull(resultType);
         Throw.IfNullOrWhiteSpace(expressionRaw);
 
-        try { Compile(inputType, resultType, expressionRaw); }
-        catch (ParseException exception) { return exception; }
+        try
+        {
+            Compile(inputType, resultType, expressionRaw);
+        }
+        catch (ParseException exception)
+        {
+            return exception;
+        }
 
         return null;
     }

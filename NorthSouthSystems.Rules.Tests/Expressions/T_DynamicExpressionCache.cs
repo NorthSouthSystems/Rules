@@ -23,7 +23,10 @@ public class T_DynamicExpressionCache
         int theInt = cache.Evaluate<TheInput, int>(new(), nameof(TheInput.TheInt));
         theInt.Should().Be(new TheInput().TheInt);
 
-        bool theBoolMethod = (bool)cache.Evaluate(new TheInput(), typeof(bool), string.Create(InvariantCulture, $"{nameof(TheInput.TheBoolMethod)}()"));
+        bool theBoolMethod = (bool)cache.Evaluate(
+            new TheInput(),
+            typeof(bool),
+            string.Create(InvariantCulture, $"{nameof(TheInput.TheBoolMethod)}()"));
         theBoolMethod.Should().Be(new TheInput().TheBoolMethod());
     }
 
@@ -38,7 +41,10 @@ public class T_DynamicExpressionCache
         exception = cache.TryCompileNoCache<TheInput, int>(nameof(TheInput.TheInt));
         exception.Should().BeNull();
 
-        exception = cache.TryCompileNoCache(typeof(TheInput), typeof(bool), string.Create(InvariantCulture, $"{nameof(TheInput.TheBoolMethod)}()"));
+        exception = cache.TryCompileNoCache(
+            typeof(TheInput),
+            typeof(bool),
+            string.Create(InvariantCulture, $"{nameof(TheInput.TheBoolMethod)}()"));
         exception.Should().BeNull();
 
         exception = cache.TryCompileNoCache<TheInput, string>("PropertyDoesNotExist");

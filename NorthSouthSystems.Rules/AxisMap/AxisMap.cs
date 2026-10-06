@@ -56,19 +56,27 @@ public abstract partial class AxisMap : IMessagePackable
     internal static int BoundCountsAggregateMultiply(IEnumerable<int> boundCounts) =>
         boundCounts.Aggregate(1, static (accumulator, count) => accumulator * count);
 
-    internal static AxisMap ParseValidateAndConstructFromTable(Type cellValueType,
-        ImmutableArray<Axis> axes, byte cellValueScaleForFormatting, ImmutableArray<object?> cellValuesRaw) =>
+    internal static AxisMap ParseValidateAndConstructFromTable(
+        Type cellValueType,
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
+        ImmutableArray<object?> cellValuesRaw) =>
         (AxisMap)typeof(AxisMap<>)
             .MakeGenericType(cellValueType)
-            .GetMethod(nameof(ParseValidateAndConstructFromTable),
+            .GetMethod(
+                nameof(ParseValidateAndConstructFromTable),
                 BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic)!
             .Invoke(null, [axes, cellValueScaleForFormatting, cellValuesRaw])!;
 
-    internal static AxisMap ParseValidateAndConstructFromTemplate(Type cellValueType,
-        ImmutableArray<Axis> axes, byte cellValueScaleForFormatting, ImmutableDictionary<string, object> cellValuesRawByAxesBoundsHashBase64) =>
+    internal static AxisMap ParseValidateAndConstructFromTemplate(
+        Type cellValueType,
+        ImmutableArray<Axis> axes,
+        byte cellValueScaleForFormatting,
+        ImmutableDictionary<string, object> cellValuesRawByAxesBoundsHashBase64) =>
         (AxisMap)typeof(AxisMap<>)
             .MakeGenericType(cellValueType)
-            .GetMethod(nameof(ParseValidateAndConstructFromTemplate),
+            .GetMethod(
+                nameof(ParseValidateAndConstructFromTemplate),
                 BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic)!
             .Invoke(null, [axes, cellValueScaleForFormatting, cellValuesRawByAxesBoundsHashBase64])!;
 
@@ -97,7 +105,8 @@ public abstract partial class AxisMap : IMessagePackable
         CellValueScaleForFormatting = cellValueScaleForFormatting;
     }
 
-    [Key(1)] public ImmutableArray<Axis> Axes { get; }
+    [Key(1)]
+    public ImmutableArray<Axis> Axes { get; }
 
     internal ImmutableArray<int> AxesHorizontalMultipliers { get; }
     internal ImmutableArray<int> AxesVerticalMultipliers { get; }
@@ -106,7 +115,9 @@ public abstract partial class AxisMap : IMessagePackable
     internal int AxesVerticalBoundCountsAggregateMultiply { get; }
 
     public abstract Type CellValueType { get; }
-    [Key(2)] public byte CellValueScaleForFormatting { get; }
+
+    [Key(2)]
+    public byte CellValueScaleForFormatting { get; }
 
     // Identical to calling BoundCountsAggregateMultiply(Axes), but more efficient.
     internal int CellValuesExpectedCount =>
@@ -130,7 +141,8 @@ public abstract partial class AxisMap : IMessagePackable
                 Array.Fill(multipliers, 1);
 
             if (axis.OrientationRelativeIndex > 0)
-                multipliers[axis.OrientationRelativeIndex - 1] = multipliers[axis.OrientationRelativeIndex] * axis.BoundCount;
+                multipliers[axis.OrientationRelativeIndex - 1] =
+                    multipliers[axis.OrientationRelativeIndex] * axis.BoundCount;
         }
 
         return (horizontal?.ToImmutableArray() ?? [], vertical?.ToImmutableArray() ?? []);
@@ -155,11 +167,14 @@ public abstract partial class AxisMap : IMessagePackable
             })
             .Select(ag => ag.Axis.PropertyPath);
 
-        ArgumentExceptionX.ThrowIfAny(axesTypeMismatches,
+        ArgumentExceptionX.ThrowIfAny(
+            axesTypeMismatches,
             "Axes Types must match their corresponding inputType's Property's Type.");
     }
 
-    public (AxisMapLookupCellValueStatus Status, object? Value) LookupCellValue(object input, StringBuilder? descriptionBuilder = null)
+    public (AxisMapLookupCellValueStatus Status, object? Value) LookupCellValue(
+        object input,
+        StringBuilder? descriptionBuilder = null)
     {
         Throw.IfNull(input);
 
@@ -194,7 +209,7 @@ public abstract partial class AxisMap : IMessagePackable
                 verticalIndex += boundIndex.Value * AxesVerticalMultipliers[axis.OrientationRelativeIndex];
         }
 
-        int cellIndex = (AxesHorizontalBoundCountsAggregateMultiply * verticalIndex) + horizontalIndex;
+        int cellIndex = AxesHorizontalBoundCountsAggregateMultiply * verticalIndex + horizontalIndex;
 
         return GetCellIsNullOrWhiteSpace(cellIndex)
             ? (AxisMapLookupCellValueStatus.CellIsNullOrWhiteSpace, null)

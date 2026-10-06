@@ -1,4 +1,5 @@
 ﻿// Most BoundNumeric and OperatorExtension methods are tested via AxisNumericTests.
+
 public class T_BoundNumeric
 {
     [Fact]

@@ -41,5 +41,6 @@ internal static class AxisMapTemplateWriter
         return builder;
     }
 
-    internal const string CellAxesBoundsHashPipeValueBase64Boundary = "--" + nameof(CellAxesBoundsHashPipeValueBase64Boundary);
+    internal const string CellAxesBoundsHashPipeValueBase64Boundary =
+        "--" + nameof(CellAxesBoundsHashPipeValueBase64Boundary);
 }

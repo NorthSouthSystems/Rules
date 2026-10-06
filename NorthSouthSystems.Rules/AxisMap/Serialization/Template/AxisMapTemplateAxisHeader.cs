@@ -19,9 +19,12 @@ internal sealed partial class AxisMapTemplateAxisHeader
         var match = HeaderRegex().Match(header);
 
         if (!match.Success)
-            throw new ArgumentException(string.Create(InvariantCulture, $"Header not properly specified. '{header}'"), nameof(header));
+            throw new ArgumentException(
+                string.Create(InvariantCulture, $"Header not properly specified. '{header}'"),
+                nameof(header));
 
-        bool isOrientationHorizontal = match.Groups["orientation"].Value.Equals("H", StringComparison.OrdinalIgnoreCase);
+        bool isOrientationHorizontal =
+            match.Groups["orientation"].Value.Equals("H", StringComparison.OrdinalIgnoreCase);
         int orientationRelativeIndex = int.Parse(match.Groups["orientationRelativeIndex"].Value, InvariantCulture);
         string propertyPath = match.Groups["propertyPath"].Value;
         string boundTypeName = match.Groups["boundTypeName"].Value;
@@ -33,14 +36,19 @@ internal sealed partial class AxisMapTemplateAxisHeader
     }
 
     public override string ToString() =>
-        string.Create(InvariantCulture, $"{(IsOrientationHorizontal ? 'H' : 'V')}:{OrientationRelativeIndex}:{PropertyPath}:{TypeX.CSharpKeywordsByType[BoundType]}");
+        string.Create(
+            InvariantCulture,
+            $"{(IsOrientationHorizontal ? 'H' : 'V')}:{OrientationRelativeIndex}:{PropertyPath}:{TypeX.CSharpKeywordsByType[BoundType]}");
 
     internal AxisMapTemplateAxisHeader(Axis axis)
         : this(axis.IsOrientationHorizontal, axis.OrientationRelativeIndex, axis.PropertyPath, axis.BoundType)
     { }
 
-    private AxisMapTemplateAxisHeader(bool isOrientationHorizontal, int orientationRelativeIndex,
-        string propertyPath, Type boundType)
+    private AxisMapTemplateAxisHeader(
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        string propertyPath,
+        Type boundType)
     {
         IsOrientationHorizontal = isOrientationHorizontal;
         OrientationRelativeIndex = orientationRelativeIndex;

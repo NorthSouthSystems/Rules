@@ -6,10 +6,12 @@
         Action act;
 
         act = static () => AxisMapTemplateReader.ParseValidateAndConstruct(_firstLineGroupInvalid);
-        act.Should().ThrowExactly<ArgumentException>().WithMessage("The first line must be Cell Value Type and optional Scale followed by a blank line*");
+        act.Should().ThrowExactly<ArgumentException>()
+            .WithMessage("The first line must be Cell Value Type and optional Scale followed by a blank line*");
 
         act = static () => AxisMapTemplateReader.ParseValidateAndConstruct(_firstLineSplitInvalid);
-        act.Should().ThrowExactly<ArgumentException>().WithMessage("Cell Value Type and optional Scale improperly specified*");
+        act.Should().ThrowExactly<ArgumentException>()
+            .WithMessage("Cell Value Type and optional Scale improperly specified*");
 
         act = static () => AxisMapTemplateReader.ParseValidateAndConstruct(_cellValueTypeNotSupported);
         act.Should().ThrowExactly<ArgumentException>().WithMessage("Cell Value Type is not supported*");

@@ -21,7 +21,9 @@ internal static class AxisMapTemplateReader
         var cellValueTypeAndScaleLines = axesLines[0];
 
         if (cellValueTypeAndScaleLines.Length > 1)
-            throw new ArgumentException("The first line must be Cell Value Type and optional Scale followed by a blank line.", nameof(template));
+            throw new ArgumentException(
+                "The first line must be Cell Value Type and optional Scale followed by a blank line.",
+                nameof(template));
 
         string[] cellValueTypeAndScaleParts = cellValueTypeAndScaleLines[0].Split(':');
 
@@ -32,7 +34,9 @@ internal static class AxisMapTemplateReader
         string cellValueScaleRaw = cellValueTypeAndScaleParts.Skip(1).SingleOrDefault() ?? "0";
 
         var cellValueType = AxisMapTableKeystone.ParseType(AxisMap.SupportedCellValueTypes, cellValueTypeRaw)
-            ?? throw new ArgumentException(string.Create(InvariantCulture, $"Cell Value Type is not supported: {cellValueTypeRaw}"), nameof(template));
+            ?? throw new ArgumentException(
+                string.Create(InvariantCulture, $"Cell Value Type is not supported: {cellValueTypeRaw}"),
+                nameof(template));
 
         byte cellValueScaleForFormatting = byte.Parse(cellValueScaleRaw, InvariantCulture);
 
@@ -41,10 +45,14 @@ internal static class AxisMapTemplateReader
             .ToImmutableArray();
 
         var cellValuesRawByAxesBoundsHashBase64 = ParseCellAxesBoundsHashValueBase64Csv(
-            cellAxesBoundsHashValueBase64Csv, cellValueType);
+            cellAxesBoundsHashValueBase64Csv,
+            cellValueType);
 
-        return AxisMap.ParseValidateAndConstructFromTemplate(cellValueType,
-            axes, cellValueScaleForFormatting, cellValuesRawByAxesBoundsHashBase64);
+        return AxisMap.ParseValidateAndConstructFromTemplate(
+            cellValueType,
+            axes,
+            cellValueScaleForFormatting,
+            cellValuesRawByAxesBoundsHashBase64);
     }
 
     private static (ImmutableArray<ImmutableArray<string>> AxesLines, string? CellAxesBoundsHashValueBase64Csv)
@@ -86,13 +94,17 @@ internal static class AxisMapTemplateReader
     {
         var header = AxisMapTemplateAxisHeader.Parse(axisLines[0]);
 
-        return Axis.ParseValidateAndConstruct(header.BoundType,
-            header.PropertyPath, header.IsOrientationHorizontal, header.OrientationRelativeIndex,
+        return Axis.ParseValidateAndConstruct(
+            header.BoundType,
+            header.PropertyPath,
+            header.IsOrientationHorizontal,
+            header.OrientationRelativeIndex,
             [.. axisLines.Skip(1)]);
     }
 
     private static ImmutableDictionary<string, object> ParseCellAxesBoundsHashValueBase64Csv(
-        string? csv, Type cellValueType) =>
+        string? csv,
+        Type cellValueType) =>
         csv is null
             ? ImmutableDictionary<string, object>.Empty
             : csv.SplitQuotedRows(StringQuotedSignals.CsvNewRowTolerantWindowsPrimaryRFC4180)
@@ -108,7 +120,8 @@ internal static class AxisMapTemplateReader
                         else if (cellValueType == typeof(int)) return BinaryRoundTrip.ReadBase64Int(valueBase64);
                         else if (cellValueType == typeof(long)) return BinaryRoundTrip.ReadBase64Long(valueBase64);
                         else if (cellValueType == typeof(double)) return BinaryRoundTrip.ReadBase64Double(valueBase64);
-                        else if (cellValueType == typeof(decimal)) return BinaryRoundTrip.ReadBase64Decimal(valueBase64);
+                        else if (cellValueType == typeof(decimal))
+                            return BinaryRoundTrip.ReadBase64Decimal(valueBase64);
                         else if (cellValueType == typeof(string)) return BinaryRoundTrip.ReadBase64String(valueBase64);
                         else throw new NotSupportedException(cellValueType.ToString());
                     });

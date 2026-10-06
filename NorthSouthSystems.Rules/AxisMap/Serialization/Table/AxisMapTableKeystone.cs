@@ -48,13 +48,17 @@ internal sealed partial class AxisMapTableKeystone
         var match = KeystoneRegex().Match(keystone);
 
         if (!match.Success)
-            throw new ArgumentException(string.Create(InvariantCulture, $"Keystone not properly specified. '{keystone}'"), nameof(keystone));
+            throw new ArgumentException(
+                string.Create(InvariantCulture, $"Keystone not properly specified. '{keystone}'"),
+                nameof(keystone));
 
         var hTypes = ParseAxesTypes(match.Groups["hTypesCsv"].Value);
         var vTypes = ParseAxesTypes(match.Groups["vTypesCsv"].Value);
 
         if (hTypes.Length == 0 && vTypes.Length == 0)
-            throw new ArgumentException(string.Create(InvariantCulture, $"Keystone does not contain any Axes. '{keystone}'"), nameof(keystone));
+            throw new ArgumentException(
+                string.Create(InvariantCulture, $"Keystone does not contain any Axes. '{keystone}'"),
+                nameof(keystone));
 
         string cTypeName = match.Groups["cType"].Value;
         var cType =
@@ -67,15 +71,19 @@ internal sealed partial class AxisMapTableKeystone
             .Where(static t => t.Type is null)
             .Select(static t => t.Name);
 
-        ArgumentExceptionX.ThrowIfAny(invalidTypeNames,
+        ArgumentExceptionX.ThrowIfAny(
+            invalidTypeNames,
             "Keystone includes unsupported Type names.",
             originalParamName: nameof(keystone));
 
         string? cTypeDefaultScaleRaw = match.Groups["cTypeDefaultScale"]?.Value;
         byte cTypeDefaultScale = byte.TryParse(cTypeDefaultScaleRaw, out byte scale) ? scale : (byte)0;
 
-        return new([.. hTypes.Select(static x => x.Type!)], [.. vTypes.Select(static x => x.Type!)],
-            cType.Type!, cTypeDefaultScale);
+        return new(
+            [.. hTypes.Select(static x => x.Type!)],
+            [.. vTypes.Select(static x => x.Type!)],
+            cType.Type!,
+            cTypeDefaultScale);
     }
 
     private static ImmutableArray<(string Name, Type? Type)> ParseAxesTypes(string typeNamesCsv) =>
@@ -97,9 +105,7 @@ internal sealed partial class AxisMapTableKeystone
 
             if (TypeX.CSharpKeywordsByType.TryGetValue(type, out string? keyword)
                 && keyword.Equals(typeName, StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
             return false;
         });
@@ -108,12 +114,18 @@ internal sealed partial class AxisMapTableKeystone
         map.Axes.Where(a => a.IsOrientationHorizontal == isOrientationHorizontal).Select(a => a.BoundType);
 
     internal AxisMapTableKeystone(AxisMap map)
-        : this([.. GetBoundTypes(map, true)], [.. GetBoundTypes(map, false)],
-            map.CellValueType, map.CellValueScaleForFormatting)
+        : this(
+            [.. GetBoundTypes(map, true)],
+            [.. GetBoundTypes(map, false)],
+            map.CellValueType,
+            map.CellValueScaleForFormatting)
     { }
 
-    private AxisMapTableKeystone(ImmutableArray<Type> horizontalAxesTypes, ImmutableArray<Type> verticalAxesTypes,
-        Type cellValueType, byte cellValueScaleForFormatting)
+    private AxisMapTableKeystone(
+        ImmutableArray<Type> horizontalAxesTypes,
+        ImmutableArray<Type> verticalAxesTypes,
+        Type cellValueType,
+        byte cellValueScaleForFormatting)
     {
         if (!cellValueType.IsFloatingPoint())
             Throw.IfGreaterThan(cellValueScaleForFormatting, 0);
@@ -134,7 +146,8 @@ internal sealed partial class AxisMapTableKeystone
     internal int CellValuesRowOffset => HorizontalAxesTypes.Length * 2;
     internal int CellValuesColumnOffset => VerticalAxesTypes.Length * 2;
 
-    public override string ToString() => string.Create(InvariantCulture,
+    public override string ToString() => string.Create(
+        InvariantCulture,
         $"[{AxesTypesToString(VerticalAxesTypes)}] x [{AxesTypesToString(HorizontalAxesTypes)}] == {TypeX.CSharpKeywordsByType[CellValueType]}:{CellValueScaleForFormatting}");
 
     private static string AxesTypesToString(ImmutableArray<Type> axesTypes) =>

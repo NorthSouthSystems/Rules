@@ -8,8 +8,11 @@ public class T_MessagePackSchema
 
     // The AxisMap schema will include the Axis schema; however, having both might help identify
     // the source of any unexpected changes.
-    [Fact] public Task AxisSchema() => VerifySchema<Axis>();
-    [Fact] public Task AxisMapSchema() => VerifySchema<AxisMap>();
+    [Fact]
+    public Task AxisSchema() => VerifySchema<Axis>();
+
+    [Fact]
+    public Task AxisMapSchema() => VerifySchema<AxisMap>();
 
     private static Task VerifySchema<T>()
         where T : IShapeable<T>

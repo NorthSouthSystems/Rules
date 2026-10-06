@@ -19,29 +19,42 @@ internal static class AxisMapTableReader
 
         var cellValuesRaw = ParseCellValuesRaw(table);
 
-        return AxisMap.ParseValidateAndConstructFromTable(table.Keystone.CellValueType,
-            axes, table.Keystone.CellValueScaleForFormatting, cellValuesRaw);
+        return AxisMap.ParseValidateAndConstructFromTable(
+            table.Keystone.CellValueType,
+            axes,
+            table.Keystone.CellValueScaleForFormatting,
+            cellValuesRaw);
     }
 
     private static void ThrowIfVoidAreaContainsData(IAxisMapTable table)
     {
         for (int rowIndex = 0; rowIndex < table.Keystone.HorizontalAxesTypes.Length * 2; rowIndex++)
-            for (int columnIndex = 0; columnIndex < table.Keystone.VerticalAxesTypes.Length * 2; columnIndex++)
-                if (!string.IsNullOrWhiteSpace(table.GetString(rowIndex, columnIndex)))
-                    throw new ArgumentException("Void area must not contain any data.", nameof(table));
+        for (int columnIndex = 0; columnIndex < table.Keystone.VerticalAxesTypes.Length * 2; columnIndex++)
+        {
+            if (!string.IsNullOrWhiteSpace(table.GetString(rowIndex, columnIndex)))
+                throw new ArgumentException("Void area must not contain any data.", nameof(table));
+        }
     }
 
-    private static void ThrowIfRowOrColumnCountMismatch(IAxisMapTable table,
-        List<Axis> axesHorizontal, List<Axis> axesVertical)
+    private static void ThrowIfRowOrColumnCountMismatch(
+        IAxisMapTable table,
+        List<Axis> axesHorizontal,
+        List<Axis> axesVertical)
     {
-        int axesRowCount = (2 * axesHorizontal.Count) + AxisMap.BoundCountsAggregateMultiply(axesVertical);
-        int axesColumnCount = (2 * axesVertical.Count) + AxisMap.BoundCountsAggregateMultiply(axesHorizontal);
+        int axesRowCount = 2 * axesHorizontal.Count + AxisMap.BoundCountsAggregateMultiply(axesVertical);
+        int axesColumnCount = 2 * axesVertical.Count + AxisMap.BoundCountsAggregateMultiply(axesHorizontal);
 
         if (table.RowCount != axesRowCount)
-            throw new ArgumentException(string.Create(InvariantCulture, $"Table RowCount and Axes mismatch. Table: {table.RowCount}, Axes: {axesRowCount}"));
+            throw new ArgumentException(
+                string.Create(
+                    InvariantCulture,
+                    $"Table RowCount and Axes mismatch. Table: {table.RowCount}, Axes: {axesRowCount}"));
 
         if (table.ColumnCount != axesColumnCount)
-            throw new ArgumentException(string.Create(InvariantCulture, $"Table ColumnCount and Axes mismatch. Table: {table.ColumnCount}, Axes: {axesColumnCount}"));
+            throw new ArgumentException(
+                string.Create(
+                    InvariantCulture,
+                    $"Table ColumnCount and Axes mismatch. Table: {table.ColumnCount}, Axes: {axesColumnCount}"));
     }
 
     private static List<Axis> ParseAxesForOrientation(IAxisMapTable table, bool isOrientationHorizontal)
@@ -59,8 +72,17 @@ internal static class AxisMapTableReader
 
             string propertyPath = propertyPathColumn[0];
 
-            ArgumentException NewArgumentException(string messagePrefix, int? boundIndex = null, string? boundString = null) =>
-                ParseAxisNewArgumentException(isOrientationHorizontal, axisIndex, propertyPath, messagePrefix, boundIndex, boundString);
+            ArgumentException NewArgumentException(
+                string messagePrefix,
+                int? boundIndex = null,
+                string? boundString = null) =>
+                ParseAxisNewArgumentException(
+                    isOrientationHorizontal,
+                    axisIndex,
+                    propertyPath,
+                    messagePrefix,
+                    boundIndex,
+                    boundString);
 
             if (string.IsNullOrWhiteSpace(propertyPath))
                 throw NewArgumentException("Axis property path must be non-null and non-whitespace.");
@@ -70,32 +92,49 @@ internal static class AxisMapTableReader
 
             var boundStringsWithVoids = ParseAxisGetStrings(table, isOrientationHorizontal, axisIndex, false);
             var boundStringsWithRepeats = ParseBoundStringsWithVoids(boundStringsWithVoids, NewArgumentException);
-            var boundStrings = ParseBoundStringsWithRepeats(boundStringsWithRepeats, NewArgumentException, ref expectedRepeatQuotient);
+            var boundStrings = ParseBoundStringsWithRepeats(
+                boundStringsWithRepeats,
+                NewArgumentException,
+                ref expectedRepeatQuotient);
 
-            var axis = Axis.ParseValidateAndConstruct(axesTypes[axisIndex], propertyPath, isOrientationHorizontal, axisIndex, boundStrings);
+            var axis = Axis.ParseValidateAndConstruct(
+                axesTypes[axisIndex],
+                propertyPath,
+                isOrientationHorizontal,
+                axisIndex,
+                boundStrings);
             axes.Add(axis);
         }
 
         return axes;
     }
 
-    private static ImmutableArray<string> ParseAxisGetStrings(IAxisMapTable table,
-        bool isOrientationHorizontal, int orientationRelativeIndex, bool isForPropertyPath)
+    private static ImmutableArray<string> ParseAxisGetStrings(
+        IAxisMapTable table,
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        bool isForPropertyPath)
     {
         Func<int, IEnumerable<string>> func = isOrientationHorizontal ? table.GetRowStrings : table.GetColumnStrings;
-        int rowOrColumnIndex = (orientationRelativeIndex * 2) + (isForPropertyPath ? 0 : 1);
+        int rowOrColumnIndex = orientationRelativeIndex * 2 + (isForPropertyPath ? 0 : 1);
         int skip = isOrientationHorizontal ? table.Keystone.CellValuesColumnOffset : table.Keystone.CellValuesRowOffset;
 
         return [.. func(rowOrColumnIndex).Skip(skip)];
     }
 
     private static ArgumentException ParseAxisNewArgumentException(
-        bool isOrientationHorizontal, int orientationRelativeIndex, string propertyPath,
-        string messagePrefix, int? boundIndex, string? boundString)
+        bool isOrientationHorizontal,
+        int orientationRelativeIndex,
+        string propertyPath,
+        string messagePrefix,
+        int? boundIndex,
+        string? boundString)
     {
         var builder = new StringBuilder(messagePrefix);
 
-        builder.Append(InvariantCulture, $" Axis: {(isOrientationHorizontal ? 'H' : 'V')}{orientationRelativeIndex}({propertyPath})");
+        builder.Append(
+            InvariantCulture,
+            $" Axis: {(isOrientationHorizontal ? 'H' : 'V')}{orientationRelativeIndex}({propertyPath})");
 
         if (boundIndex is not null || boundString is not null)
             builder.Append(InvariantCulture, $" Bound: {boundIndex}({boundString})");
@@ -104,9 +143,12 @@ internal static class AxisMapTableReader
     }
 
     private delegate ArgumentException ParseAxisNewArgumentExceptionCurried(
-        string messagePrefix, int? boundIndex = null, string? boundString = null);
+        string messagePrefix,
+        int? boundIndex = null,
+        string? boundString = null);
 
-    private static ImmutableArray<string> ParseBoundStringsWithVoids(ImmutableArray<string> boundStringsWithVoids,
+    private static ImmutableArray<string> ParseBoundStringsWithVoids(
+        ImmutableArray<string> boundStringsWithVoids,
         ParseAxisNewArgumentExceptionCurried newArgumentException)
     {
         int interBoundVoidCount = boundStringsWithVoids.ReverseNoBuffer()
@@ -142,8 +184,10 @@ internal static class AxisMapTableReader
         return [.. boundStringsWithRepeats];
     }
 
-    private static ImmutableArray<string> ParseBoundStringsWithRepeats(ImmutableArray<string> boundStringsWithRepeats,
-        ParseAxisNewArgumentExceptionCurried newArgumentException, ref int expectedRepeatQuotient)
+    private static ImmutableArray<string> ParseBoundStringsWithRepeats(
+        ImmutableArray<string> boundStringsWithRepeats,
+        ParseAxisNewArgumentExceptionCurried newArgumentException,
+        ref int expectedRepeatQuotient)
     {
         string firstBound = boundStringsWithRepeats[0];
 
@@ -181,9 +225,11 @@ internal static class AxisMapTableReader
         expectedRepeatQuotient *= firstRepeatIndex;
 
         // Recheck i == 0 for sanity (we can skip because of the checks above, but don't).
-        for (int i = 0; (i + firstRepeatIndex) < boundStringsWithRepeats.Length; i++)
+        for (int i = 0; i + firstRepeatIndex < boundStringsWithRepeats.Length; i++)
+        {
             if (boundStringsWithRepeats[i] != boundStringsWithRepeats[i + firstRepeatIndex])
                 throw newArgumentException("Axis inconsistent bound repeats.", i, boundStringsWithRepeats[i]);
+        }
 
         return [.. boundStringsWithRepeats[..firstRepeatIndex]];
     }
@@ -199,8 +245,8 @@ internal static class AxisMapTableReader
 
         // All rows have the same number of columns.
         for (int rowIndex = keystone.CellValuesRowOffset; rowIndex < table.RowCount; rowIndex++)
-            for (int columnIndex = keystone.CellValuesColumnOffset; columnIndex < table.ColumnCount; columnIndex++)
-                values.Add(table.GetObject(rowIndex, columnIndex));
+        for (int columnIndex = keystone.CellValuesColumnOffset; columnIndex < table.ColumnCount; columnIndex++)
+            values.Add(table.GetObject(rowIndex, columnIndex));
 
         return [.. values];
     }

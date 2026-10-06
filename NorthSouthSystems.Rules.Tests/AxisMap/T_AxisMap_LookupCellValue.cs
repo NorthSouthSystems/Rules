@@ -6,8 +6,16 @@ using static T_AxisMapXlsxX;
 public partial class T_AxisMap_LookupCellValue
 {
     private sealed record TheInput(
-        string H0_ = null, string H1_ = null, string H2_ = null, string H3_ = null, string H4_ = null,
-        string V0_ = null, string V1_ = null, string V2_ = null, string V3_ = null, string V4_ = null)
+        string H0_ = null,
+        string H1_ = null,
+        string H2_ = null,
+        string H3_ = null,
+        string H4_ = null,
+        string V0_ = null,
+        string V1_ = null,
+        string V2_ = null,
+        string V3_ = null,
+        string V4_ = null)
     {
         public const char ValuePartsDelimiter = '|';
 
@@ -24,7 +32,7 @@ public partial class T_AxisMap_LookupCellValue
         public string V4 => Concat(nameof(V4), V4_);
 
         private static string Concat(string prefix, string suffix) =>
-            suffix is not null ? (prefix + suffix) : null;
+            suffix is not null ? prefix + suffix : null;
 
         public string ExpectedValue =>
             string.Join(ValuePartsDelimiter, GetParts());
@@ -32,7 +40,8 @@ public partial class T_AxisMap_LookupCellValue
         // This ordering simulates the line in AxisMap's constructor that provides guaranteed ordering:
         // axes.OrderBy(a => a.OrientationRelativeIndex).ThenByDescending(a => a.IsOrientationHorizontal)
         public string ExpectedDescription =>
-            string.Join(" and ",
+            string.Join(
+                " and ",
                 GetParts()
                     .OrderBy(p => p[1])
                     .ThenBy(p => p[0])
@@ -42,7 +51,9 @@ public partial class T_AxisMap_LookupCellValue
             new[] { H0, H1, H2, H3, H4, /**/ V0, V1, V2, V3, V4 }.Where(string.IsNotNullAndNotEmpty);
     }
 
-    private static void Test(int[] horizontalBoundCounts, int[] verticalBoundCounts,
+    private static void Test(
+        int[] horizontalBoundCounts,
+        int[] verticalBoundCounts,
         params (TheInput Input, bool ExpectedFound)[] testCases)
     {
         horizontalBoundCounts.Length.Should().BeLessThanOrEqualTo(AxisMap.AxesOrientationCountMax);
@@ -74,7 +85,9 @@ public partial class T_AxisMap_LookupCellValue
 
         // TODO : Test null cell values.
         var map = AxisMap<string>.ParseValidateAndConstructFromTable(
-            [.. hAxes.Concat(vAxes).Cast<Axis>()], 0, cellValues);
+            [.. hAxes.Concat(vAxes).Cast<Axis>()],
+            0,
+            cellValues);
 
         map.ThrowIfAxesInputTypeMismatches(typeof(TheInput));
 
@@ -103,7 +116,9 @@ public partial class T_AxisMap_LookupCellValue
 
             return AxisString.ParseValidateAndConstruct(
                 $"{(isOrientationHorizontal ? "H" : "V")}{orientationRelativeIndex}",
-                isOrientationHorizontal, orientationRelativeIndex, [.. bounds]);
+                isOrientationHorizontal,
+                orientationRelativeIndex,
+                [.. bounds]);
         }
 
         static string CreateBound(bool isOrientationHorizontal, int orientationRelativeIndex, int boundIndex) =>
@@ -125,15 +140,23 @@ public partial class T_AxisMap_LookupCellValue
             for (int cellIndex = 0; cellIndex < m.CellValuesExpectedCount; cellIndex++)
             {
                 var axesBounds = m.GetCellAxesBoundIndices(cellIndex)
-                    .Select(abi => CreateBound(abi.Axis.IsOrientationHorizontal, abi.Axis.OrientationRelativeIndex, abi.BoundIndex))
+                    .Select(abi => CreateBound(
+                        abi.Axis.IsOrientationHorizontal,
+                        abi.Axis.OrientationRelativeIndex,
+                        abi.BoundIndex))
                     .OrderBy(axisBound => axisBound);
 
                 string.Join(TheInput.ValuePartsDelimiter, axesBounds).Should().Be((string)m.GetCellValue(cellIndex));
             }
         }
 
-        static void TestCase(int hAxesCount, int vAxesCount, AxisMap m,
-            TheInput input, bool expectedFound, int testCaseIndex)
+        static void TestCase(
+            int hAxesCount,
+            int vAxesCount,
+            AxisMap m,
+            TheInput input,
+            bool expectedFound,
+            int testCaseIndex)
         {
             var description = new StringBuilder();
 
@@ -150,7 +173,7 @@ public partial class T_AxisMap_LookupCellValue
                 string because = string.Create(InvariantCulture, $"{nameof(testCaseIndex)}: {testCaseIndex}");
 
                 result.Status.Should().Be(
-                    (expectedFoundOverride ?? expectedFound)
+                    expectedFoundOverride ?? expectedFound
                         ? AxisMapLookupCellValueStatus.Success
                         : AxisMapLookupCellValueStatus.CellNotFound,
                     because);

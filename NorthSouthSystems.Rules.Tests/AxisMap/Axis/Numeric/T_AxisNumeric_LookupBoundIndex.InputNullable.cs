@@ -3,7 +3,8 @@
     [Fact]
     public void Nullable()
     {
-        Test(["1", "2"],
+        Test(
+            ["1", "2"],
             (-1, null),
             (0, null),
             (1, 0),

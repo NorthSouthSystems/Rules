@@ -20,7 +20,8 @@
         foreach (string invalidWhiteSpace in new[] { "foo\tbar", "foo\rbar", "foo\nbar", "foo\r\nbar" })
         {
             act = () => Construct(invalidWhiteSpace);
-            act.Should().ThrowExactly<ArgumentException>().WithMessage("Space is the only whitespace character allowed*");
+            act.Should().ThrowExactly<ArgumentException>()
+                .WithMessage("Space is the only whitespace character allowed*");
         }
 
         act = static () => Construct("foo bar");
@@ -32,8 +33,14 @@
         act = static () => Construct("foo", "bar*", "*", "foobar");
         act.Should().ThrowExactly<ArgumentException>().Which.Message.Should().Contain("Match All");
 
+        return;
+
         static AxisString Construct(params string[] boundStrings) =>
-            AxisString.ParseValidateAndConstruct(T_AxisMapInput.GetPropertyName(typeof(string)), true, 0, [.. boundStrings]);
+            AxisString.ParseValidateAndConstruct(
+                T_AxisMapInput.GetPropertyName(typeof(string)),
+                true,
+                0,
+                [.. boundStrings]);
     }
 }
 
@@ -44,7 +51,8 @@ public class T_AxisString_LookupBoundIndex
     {
         // Exact
 
-        Test(["FOO", "bar"],
+        Test(
+            ["FOO", "bar"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -54,7 +62,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Case-insensitive
 
-        Test(["FOO", "~bar"],
+        Test(
+            ["FOO", "~bar"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -64,7 +73,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Single character wildcard prefix
 
-        Test(["?OO", "~bar"],
+        Test(
+            ["?OO", "~bar"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -78,7 +88,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Multi character wildcard prefixed
 
-        Test(["FOO", "~*bar"],
+        Test(
+            ["FOO", "~*bar"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -90,7 +101,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Single character wildcard suffix
 
-        Test(["FOO", "~ba?"],
+        Test(
+            ["FOO", "~ba?"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -102,7 +114,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Multi character wildcard suffix
 
-        Test(["FOO*", "~bar"],
+        Test(
+            ["FOO*", "~bar"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -112,7 +125,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Both wildcards suffixed
 
-        Test(["FOO*", "~ba?"],
+        Test(
+            ["FOO*", "~ba?"],
             ("FOO", 0),
             ("bar", 1),
             ("foo", null),
@@ -126,7 +140,8 @@ public class T_AxisString_LookupBoundIndex
 
         // Both wildcards inner
 
-        Test(["FOO*r", "~ba?s"],
+        Test(
+            ["FOO*r", "~ba?s"],
             ("FOO", null),
             ("bar", null),
             ("foo", null),
@@ -146,7 +161,9 @@ public class T_AxisString_LookupBoundIndex
 
         // Overlap
 
-        Test(["FOO", "~foo*"], true,
+        Test(
+            ["FOO", "~foo*"],
+            true,
             ("FOO", 0),
             ("bar", null),
             ("foo", 1),
@@ -158,7 +175,10 @@ public class T_AxisString_LookupBoundIndex
     private static void Test(string[] boundStrings, params (string Value, int? ExpectedIndex)[] testCases) =>
         Test(boundStrings, false, testCases);
 
-    private static void Test(string[] boundStrings, bool omitReverse, params (string Value, int? ExpectedIndex)[] testCases)
+    private static void Test(
+        string[] boundStrings,
+        bool omitReverse,
+        params (string Value, int? ExpectedIndex)[] testCases)
     {
         var expandedTestCases = testCases
             .Append((null, null))
@@ -167,13 +187,17 @@ public class T_AxisString_LookupBoundIndex
 
         T_Axis.LookupBoundIndex_Test([.. boundStrings], [.. boundStrings], omitReverse, expandedTestCases);
 
-        T_Axis.LookupBoundIndex_Test([.. boundStrings.Append("*")], [.. boundStrings.Append("*")], true,
+        T_Axis.LookupBoundIndex_Test(
+            [.. boundStrings.Append("*")],
+            [.. boundStrings.Append("*")],
+            true,
             TestCasesWithWildcard(expandedTestCases, boundStrings.Length));
     }
 
     internal static IEnumerable<(T Value, int? ExpectedIndex)> TestCasesWithWildcard<T>(
-        IEnumerable<(T Value, int? ExpectedIndex)> testCases, int wildcardIndex) =>
-        testCases.Select(tc => (tc.Value, tc.Value is not null ? (tc.ExpectedIndex ?? wildcardIndex) : tc.ExpectedIndex));
+        IEnumerable<(T Value, int? ExpectedIndex)> testCases,
+        int wildcardIndex) =>
+        testCases.Select(tc => (tc.Value, tc.Value is not null ? tc.ExpectedIndex ?? wildcardIndex : tc.ExpectedIndex));
 }
 
 public class T_AxisString_AppendBoundDescription
@@ -181,22 +205,27 @@ public class T_AxisString_AppendBoundDescription
     [Fact]
     public void Full()
     {
-        T_Axis.AppendBoundDescription_Test<string>(["FOO", "bar"],
+        T_Axis.AppendBoundDescription_Test<string>(
+            ["FOO", "bar"],
             (0, "== 'FOO'"),
             (1, "== 'bar'")
         );
 
-        T_Axis.AppendBoundDescription_Test<string>(["FOO", "~bar"],
+        T_Axis.AppendBoundDescription_Test<string>(
+            ["FOO", "~bar"],
             (0, "== 'FOO'"),
             (1, "=~ '~bar'")
         );
 
-        T_Axis.AppendBoundDescription_Test<string>(["FOO", "bar?"],
+        T_Axis.AppendBoundDescription_Test<string>(
+            ["FOO", "bar?"],
             (0, "== 'FOO'"),
             (1, "=~ 'bar?'")
         );
 
-        T_Axis.AppendBoundDescription_Test<string>(["FOO*", "*"], true,
+        T_Axis.AppendBoundDescription_Test<string>(
+            ["FOO*", "*"],
+            true,
             (0, "=~ 'FOO*'"),
             (1, "=~ '*'")
         );
@@ -208,42 +237,48 @@ public class T_AxisString_Enum_LookupBoundIndex
     [Fact]
     public void Enum()
     {
-        Test([T_AxisMapInputEnum.A, T_AxisMapInputEnum.B],
+        Test(
+            [T_AxisMapInputEnum.A, T_AxisMapInputEnum.B],
             (T_AxisMapInputEnum.A, 0),
             (T_AxisMapInputEnum.B, 1),
             (T_AxisMapInputEnum.C, null),
             (T_AxisMapInputEnum.D, null)
         );
 
-        Test([T_AxisMapInputEnum.B, T_AxisMapInputEnum.A],
+        Test(
+            [T_AxisMapInputEnum.B, T_AxisMapInputEnum.A],
             (T_AxisMapInputEnum.A, 1),
             (T_AxisMapInputEnum.B, 0),
             (T_AxisMapInputEnum.C, null),
             (T_AxisMapInputEnum.D, null)
         );
 
-        Test([T_AxisMapInputEnum.B, T_AxisMapInputEnum.C],
+        Test(
+            [T_AxisMapInputEnum.B, T_AxisMapInputEnum.C],
             (T_AxisMapInputEnum.A, null),
             (T_AxisMapInputEnum.B, 0),
             (T_AxisMapInputEnum.C, 1),
             (T_AxisMapInputEnum.D, null)
         );
 
-        Test([T_AxisMapInputEnum.C, T_AxisMapInputEnum.B],
+        Test(
+            [T_AxisMapInputEnum.C, T_AxisMapInputEnum.B],
             (T_AxisMapInputEnum.A, null),
             (T_AxisMapInputEnum.B, 1),
             (T_AxisMapInputEnum.C, 0),
             (T_AxisMapInputEnum.D, null)
         );
 
-        Test([T_AxisMapInputEnum.A, T_AxisMapInputEnum.B, T_AxisMapInputEnum.C],
+        Test(
+            [T_AxisMapInputEnum.A, T_AxisMapInputEnum.B, T_AxisMapInputEnum.C],
             (T_AxisMapInputEnum.A, 0),
             (T_AxisMapInputEnum.B, 1),
             (T_AxisMapInputEnum.C, 2),
             (T_AxisMapInputEnum.D, null)
         );
 
-        Test([T_AxisMapInputEnum.D, T_AxisMapInputEnum.C, T_AxisMapInputEnum.B],
+        Test(
+            [T_AxisMapInputEnum.D, T_AxisMapInputEnum.C, T_AxisMapInputEnum.B],
             (T_AxisMapInputEnum.A, null),
             (T_AxisMapInputEnum.B, 2),
             (T_AxisMapInputEnum.C, 1),
@@ -254,7 +289,8 @@ public class T_AxisString_Enum_LookupBoundIndex
     [Fact]
     public void EnumNullable()
     {
-        Test_Nullable([T_AxisMapInputEnum.C, T_AxisMapInputEnum.A],
+        Test_Nullable(
+            [T_AxisMapInputEnum.C, T_AxisMapInputEnum.A],
             (T_AxisMapInputEnum.A, 1),
             (T_AxisMapInputEnum.B, null),
             (T_AxisMapInputEnum.C, 0),
@@ -262,7 +298,9 @@ public class T_AxisString_Enum_LookupBoundIndex
         );
     }
 
-    private static void Test(T_AxisMapInputEnum[] boundEnums, params (T_AxisMapInputEnum Value, int? ExpectedIndex)[] testCases)
+    private static void Test(
+        T_AxisMapInputEnum[] boundEnums,
+        params (T_AxisMapInputEnum Value, int? ExpectedIndex)[] testCases)
     {
         var boundStrings = boundEnums.Select(b => b.ToString()).ToImmutableArray();
 
@@ -270,11 +308,16 @@ public class T_AxisString_Enum_LookupBoundIndex
 
         boundStrings = [.. boundStrings.Append("*")];
 
-        T_Axis.LookupBoundIndex_Test(boundStrings, boundStrings, true,
+        T_Axis.LookupBoundIndex_Test(
+            boundStrings,
+            boundStrings,
+            true,
             T_AxisString_LookupBoundIndex.TestCasesWithWildcard(testCases, boundEnums.Length));
     }
 
-    private static void Test_Nullable(T_AxisMapInputEnum[] boundEnums, params (T_AxisMapInputEnum? Value, int? ExpectedIndex)[] testCases)
+    private static void Test_Nullable(
+        T_AxisMapInputEnum[] boundEnums,
+        params (T_AxisMapInputEnum? Value, int? ExpectedIndex)[] testCases)
     {
         var boundStrings = boundEnums.Select(b => b.ToString()).ToImmutableArray();
 
@@ -282,7 +325,10 @@ public class T_AxisString_Enum_LookupBoundIndex
 
         boundStrings = [.. boundStrings.Append("*")];
 
-        T_Axis.LookupBoundIndex_Test(boundStrings, boundStrings, true,
+        T_Axis.LookupBoundIndex_Test(
+            boundStrings,
+            boundStrings,
+            true,
             T_AxisString_LookupBoundIndex.TestCasesWithWildcard(testCases, boundEnums.Length));
     }
 }
@@ -292,12 +338,14 @@ public class T_AxisString_Enum_AppendBoundDescription
     [Fact]
     public void Full()
     {
-        T_Axis.AppendBoundDescription_Test<T_AxisMapInputEnum>([T_AxisMapInputEnum.A.ToString(), T_AxisMapInputEnum.B.ToString()],
+        T_Axis.AppendBoundDescription_Test<T_AxisMapInputEnum>(
+            [T_AxisMapInputEnum.A.ToString(), T_AxisMapInputEnum.B.ToString()],
             (0, "== 'A'"),
             (1, "== 'B'")
         );
 
-        T_Axis.AppendBoundDescription_Test<T_AxisMapInputEnum?>([T_AxisMapInputEnum.A.ToString(), T_AxisMapInputEnum.B.ToString()],
+        T_Axis.AppendBoundDescription_Test<T_AxisMapInputEnum?>(
+            [T_AxisMapInputEnum.A.ToString(), T_AxisMapInputEnum.B.ToString()],
             (0, "== 'A'"),
             (1, "== 'B'")
         );
