@@ -76,6 +76,10 @@ resharper_unused_method_return_value_local_highlighting = suggestion # Noisy for
 dotnet_diagnostic.ca1515.severity = none
 
 #################### BENCHMARKS AND TESTS ####################
+[*.verified.*]
+generated_code = true
+resharper_substitution_for_cleanup_profile = * => skip
+
 # Roslyn does NOT support this glob pattern; therefore, only ReSharper overrides can be used within its scope.
 [**/*.{Benchmarks,Tests}/**/*.cs]
 
