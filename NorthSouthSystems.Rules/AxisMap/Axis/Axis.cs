@@ -50,41 +50,53 @@ public abstract partial class Axis : IMessagePackable
         try
         {
             if (type == typeof(bool))
+            {
                 return AxisBool.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else if (type == typeof(short))
+            {
                 return AxisNumeric<short>.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else if (type == typeof(int))
+            {
                 return AxisNumeric<int>.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else if (type == typeof(long))
+            {
                 return AxisNumeric<long>.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else if (type == typeof(decimal))
+            {
                 return AxisNumeric<decimal>.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else if (type == typeof(string))
+            {
                 return AxisString.ParseValidateAndConstruct(
                     propertyPath,
                     isOrientationHorizontal,
                     orientationRelativeIndex,
                     boundsRaw);
+            }
             else throw new NotSupportedException(type.ToString());
         }
         catch (Exception innerException)

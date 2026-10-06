@@ -19,9 +19,11 @@ internal sealed partial class AxisMapTemplateAxisHeader
         var match = HeaderRegex().Match(header);
 
         if (!match.Success)
+        {
             throw new ArgumentException(
                 string.Create(InvariantCulture, $"Header not properly specified. '{header}'"),
                 nameof(header));
+        }
 
         bool isOrientationHorizontal =
             match.Groups["orientation"].Value.Equals("H", StringComparison.OrdinalIgnoreCase);

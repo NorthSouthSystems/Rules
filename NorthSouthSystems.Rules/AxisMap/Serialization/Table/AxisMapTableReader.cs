@@ -45,16 +45,20 @@ internal static class AxisMapTableReader
         int axesColumnCount = 2 * axesVertical.Count + AxisMap.BoundCountsAggregateMultiply(axesHorizontal);
 
         if (table.RowCount != axesRowCount)
+        {
             throw new ArgumentException(
                 string.Create(
                     InvariantCulture,
                     $"Table RowCount and Axes mismatch. Table: {table.RowCount}, Axes: {axesRowCount}"));
+        }
 
         if (table.ColumnCount != axesColumnCount)
+        {
             throw new ArgumentException(
                 string.Create(
                     InvariantCulture,
                     $"Table ColumnCount and Axes mismatch. Table: {table.ColumnCount}, Axes: {axesColumnCount}"));
+        }
     }
 
     private static List<Axis> ParseAxesForOrientation(IAxisMapTable table, bool isOrientationHorizontal)

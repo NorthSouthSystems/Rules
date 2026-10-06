@@ -39,8 +39,10 @@ public class AxisMap<TCellValue> : AxisMap
     private static void Validate(ImmutableArray<Axis> axes, byte cellValueScaleForFormatting)
     {
         if (!SupportedCellValueTypes.Contains(typeof(TCellValue)))
+        {
             throw new NotSupportedException(
                 string.Create(InvariantCulture, $"{nameof(TCellValue)} == {typeof(TCellValue)}"));
+        }
 
         // Short-circuits AxesOrientationCountMax validation.
         Throw.IfEqual(axes.IsDefault, true);

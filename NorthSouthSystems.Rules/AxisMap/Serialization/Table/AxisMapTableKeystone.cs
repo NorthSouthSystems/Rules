@@ -48,17 +48,21 @@ internal sealed partial class AxisMapTableKeystone
         var match = KeystoneRegex().Match(keystone);
 
         if (!match.Success)
+        {
             throw new ArgumentException(
                 string.Create(InvariantCulture, $"Keystone not properly specified. '{keystone}'"),
                 nameof(keystone));
+        }
 
         var hTypes = ParseAxesTypes(match.Groups["hTypesCsv"].Value);
         var vTypes = ParseAxesTypes(match.Groups["vTypesCsv"].Value);
 
         if (hTypes.Length == 0 && vTypes.Length == 0)
+        {
             throw new ArgumentException(
                 string.Create(InvariantCulture, $"Keystone does not contain any Axes. '{keystone}'"),
                 nameof(keystone));
+        }
 
         string cTypeName = match.Groups["cType"].Value;
         var cType =

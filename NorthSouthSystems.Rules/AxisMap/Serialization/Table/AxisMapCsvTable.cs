@@ -69,9 +69,11 @@ internal class AxisMapCsvTable : IAxisMapTable
             : rowsRaw;
 
         if (rows.Length == 0)
+        {
             throw new ArgumentException(
                 "Csv must contain at least one non-empty non-whitespace row after the keystone.",
                 nameof(csv));
+        }
 
         var blankRowIndices = rows
             .Select((row, index) => row.Any(string.IsNotNullAndNotWhiteSpace) ? -1 : index)

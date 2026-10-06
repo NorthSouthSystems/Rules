@@ -22,11 +22,13 @@ public sealed class AxisString : Axis
             throw new ArgumentNullException(nameof(boundStrings), "All strings must be non-null and non-whitespace.");
 
         if (boundStrings.Any(bound => bound.Length > _boundLengthMax))
+        {
             throw new ArgumentOutOfRangeException(
                 nameof(boundStrings),
                 string.Create(
                     InvariantCulture,
                     $"Each string must be less than or equal to {_boundLengthMax} characters."));
+        }
 
         var boundStringsWithInvalidWhiteSpace =
             boundStrings.Where(bound => bound.Any(c => char.IsWhiteSpace(c) && c != ' '));

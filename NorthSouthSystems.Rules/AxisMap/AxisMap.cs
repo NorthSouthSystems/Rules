@@ -141,8 +141,10 @@ public abstract partial class AxisMap : IMessagePackable
                 Array.Fill(multipliers, 1);
 
             if (axis.OrientationRelativeIndex > 0)
+            {
                 multipliers[axis.OrientationRelativeIndex - 1] =
                     multipliers[axis.OrientationRelativeIndex] * axis.BoundCount;
+            }
         }
 
         return (horizontal?.ToImmutableArray() ?? [], vertical?.ToImmutableArray() ?? []);

@@ -21,9 +21,11 @@ internal static class AxisMapTemplateReader
         var cellValueTypeAndScaleLines = axesLines[0];
 
         if (cellValueTypeAndScaleLines.Length > 1)
+        {
             throw new ArgumentException(
                 "The first line must be Cell Value Type and optional Scale followed by a blank line.",
                 nameof(template));
+        }
 
         string[] cellValueTypeAndScaleParts = cellValueTypeAndScaleLines[0].Split(':');
 

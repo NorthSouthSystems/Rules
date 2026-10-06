@@ -19,8 +19,10 @@ public sealed class AxisNumeric<TBoundValue> : Axis
         ImmutableArray<string> boundNumericsRaw)
     {
         if (!SupportedBoundTypes.Contains(typeof(TBoundValue)))
+        {
             throw new NotSupportedException(
                 string.Create(InvariantCulture, $"{nameof(TBoundValue)} == {typeof(TBoundValue)}"));
+        }
 
         Validate(propertyPath, orientationRelativeIndex, boundNumericsRaw);
 
@@ -212,14 +214,18 @@ public sealed class AxisNumeric<TBoundValue> : Axis
             if (lesserValue == greaterValue)
                 builder.Append(InvariantCulture, $"== {lesserValue.ToString(boundNumberFormat, InvariantCulture)}");
             else
+            {
                 builder.Append(
                     InvariantCulture,
                     $"[{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}]");
+            }
         }
         else
+        {
             builder.Append(
                 InvariantCulture,
                 $"{(lesserInclusive ? '[' : '(')}{lesserValue.ToString(boundNumberFormat, InvariantCulture)}, {greaterValue.ToString(boundNumberFormat, InvariantCulture)}{(greaterInclusive ? ']' : ')')}");
+        }
     }
 
     protected override void AppendBoundHash(XxHash128 hasher, int boundIndex) =>
