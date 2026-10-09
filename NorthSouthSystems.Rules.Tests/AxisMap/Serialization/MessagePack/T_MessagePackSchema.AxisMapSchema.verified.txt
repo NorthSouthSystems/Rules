@@ -1,12 +1,12 @@
 ﻿{
-  "oneOf": [
+  "anyOf": [
     {
       "oneOf": [
         {
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "null"
             },
@@ -20,7 +20,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -28,7 +28,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Boolean%5D"
             }
           ]
         },
@@ -36,7 +36,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -44,7 +44,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Int16%5D"
             }
           ]
         },
@@ -52,7 +52,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -60,7 +60,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Int32%5D"
             }
           ]
         },
@@ -68,7 +68,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -76,7 +76,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Int64%5D"
             }
           ]
         },
@@ -84,7 +84,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -92,7 +92,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Double, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Double%5D"
             }
           ]
         },
@@ -100,7 +100,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -108,7 +108,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.Decimal%5D"
             }
           ]
         },
@@ -116,7 +116,7 @@
           "type": "array",
           "minItems": 2,
           "maxItems": 2,
-          "items": [
+          "prefixItems": [
             {
               "type": "integer",
               "enum": [
@@ -124,7 +124,7 @@
               ]
             },
             {
-              "$ref": "#/definitions/NorthSouthSystems.Rules.AxisMap\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+              "$ref": "#/$defs/NorthSouthSystems.Rules.AxisMap%601%5BSystem.String%5D"
             }
           ]
         }
@@ -134,7 +134,7 @@
       "type": "null"
     }
   ],
-  "definitions": {
+  "$defs": {
     "NorthSouthSystems.Rules.AxisBool": {
       "type": [
         "object",
@@ -158,7 +158,7 @@
           "description": "BoundBoolIndex0"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -207,14 +207,14 @@
       ],
       "description": "0 = EqualTo, 1 = GreaterThan, 2 = GreaterThanOrEqualTo, 3 = LessThan, 4 = LessThanOrEqualTo"
     },
-    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int16]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -222,9 +222,9 @@
           "description": "Value"
         }
       },
-      "items": [
+      "prefixItems": [
         {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -238,13 +238,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int16]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int16%5D"
       }
     },
-    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[System.Int16]": {
       "type": [
         "object",
         "array"
@@ -263,7 +263,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int16%5D%5D",
           "description": "BoundNumerics"
         },
         "6": {
@@ -271,7 +271,7 @@
           "description": "BoundScale"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -309,7 +309,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int16%5D%5D",
           "description": "BoundNumerics"
         },
         {
@@ -326,14 +326,14 @@
       ],
       "minItems": 7
     },
-    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int32]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -341,9 +341,9 @@
           "description": "Value"
         }
       },
-      "items": [
+      "prefixItems": [
         {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -357,13 +357,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int32]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int32%5D"
       }
     },
-    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[System.Int32]": {
       "type": [
         "object",
         "array"
@@ -382,7 +382,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int32%5D%5D",
           "description": "BoundNumerics"
         },
         "6": {
@@ -390,7 +390,7 @@
           "description": "BoundScale"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -428,7 +428,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int32%5D%5D",
           "description": "BoundNumerics"
         },
         {
@@ -445,14 +445,14 @@
       ],
       "minItems": 7
     },
-    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int64]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
@@ -460,9 +460,9 @@
           "description": "Value"
         }
       },
-      "items": [
+      "prefixItems": [
         {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
@@ -476,13 +476,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[NorthSouthSystems.Rules.BoundNumeric\u00601[System.Int64]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int64%5D"
       }
     },
-    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[System.Int64]": {
       "type": [
         "object",
         "array"
@@ -501,7 +501,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int64%5D%5D",
           "description": "BoundNumerics"
         },
         "6": {
@@ -509,7 +509,7 @@
           "description": "BoundScale"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -547,7 +547,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Int64%5D%5D",
           "description": "BoundNumerics"
         },
         {
@@ -568,28 +568,28 @@
       "type": "string",
       "pattern": "^msgpack extension 4 as base64: "
     },
-    "NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.BoundNumeric\u00601[System.Decimal]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "0": {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         "1": {
-          "$ref": "#/definitions/System.Decimal",
+          "$ref": "#/$defs/System.Decimal",
           "description": "Value"
         }
       },
-      "items": [
+      "prefixItems": [
         {
-          "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumericOperator",
+          "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumericOperator",
           "description": "Operator"
         },
         {
-          "$ref": "#/definitions/System.Decimal",
+          "$ref": "#/$defs/System.Decimal",
           "description": "Value"
         }
       ],
@@ -599,13 +599,13 @@
       ],
       "minItems": 2
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[NorthSouthSystems.Rules.BoundNumeric\u00601[System.Decimal]]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+        "$ref": "#/$defs/NorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Decimal%5D"
       }
     },
-    "NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisNumeric\u00601[System.Decimal]": {
       "type": [
         "object",
         "array"
@@ -624,7 +624,7 @@
           "description": "OrientationRelativeIndex"
         },
         "5": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Decimal%5D%5D",
           "description": "BoundNumerics"
         },
         "6": {
@@ -632,7 +632,7 @@
           "description": "BoundScale"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -670,7 +670,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.BoundNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.BoundNumeric%601%5BSystem.Decimal%5D%5D",
           "description": "BoundNumerics"
         },
         {
@@ -687,7 +687,7 @@
       ],
       "minItems": 7
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.String]": {
       "type": "array",
       "items": {
         "type": "string"
@@ -712,11 +712,11 @@
           "description": "OrientationRelativeIndex"
         },
         "7": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.String%5D",
           "description": "BoundStrings"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -778,7 +778,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.String%5D",
           "description": "BoundStrings"
         }
       ],
@@ -790,7 +790,7 @@
       ],
       "minItems": 8
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[NorthSouthSystems.Rules.Axis]": {
       "type": "array",
       "items": {
         "oneOf": [
@@ -798,7 +798,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "null"
               },
@@ -812,7 +812,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -820,7 +820,7 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisBool"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisBool"
               }
             ]
           },
@@ -828,7 +828,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -836,7 +836,7 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisNumeric%601%5BSystem.Int16%5D"
               }
             ]
           },
@@ -844,7 +844,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -852,7 +852,7 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisNumeric%601%5BSystem.Int32%5D"
               }
             ]
           },
@@ -860,7 +860,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -868,7 +868,7 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisNumeric%601%5BSystem.Int64%5D"
               }
             ]
           },
@@ -876,7 +876,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -884,7 +884,7 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisNumeric\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisNumeric%601%5BSystem.Decimal%5D"
               }
             ]
           },
@@ -892,7 +892,7 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": [
+            "prefixItems": [
               {
                 "type": "integer",
                 "enum": [
@@ -900,27 +900,27 @@
                 ]
               },
               {
-                "$ref": "#/definitions/NorthSouthSystems.Rules.AxisString"
+                "$ref": "#/$defs/NorthSouthSystems.Rules.AxisString"
               }
             ]
           }
         ]
       }
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Boolean]": {
       "type": "array",
       "items": {
         "type": "boolean"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Boolean]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -928,15 +928,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -950,7 +950,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -958,11 +958,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -974,20 +974,20 @@
       ],
       "minItems": 5
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Int16]": {
       "type": "array",
       "items": {
         "type": "integer"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Int16]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -995,15 +995,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int16%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1017,7 +1017,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1025,11 +1025,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int16, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int16%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1041,20 +1041,20 @@
       ],
       "minItems": 5
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Int32]": {
       "type": "array",
       "items": {
         "type": "integer"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Int32]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -1062,15 +1062,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int32%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1084,7 +1084,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1092,11 +1092,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int32%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1108,20 +1108,20 @@
       ],
       "minItems": 5
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Int64]": {
       "type": "array",
       "items": {
         "type": "integer"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Int64]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -1129,15 +1129,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int64%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1151,7 +1151,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1159,11 +1159,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Int64, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Int64%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1175,20 +1175,20 @@
       ],
       "minItems": 5
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Double, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Double]": {
       "type": "array",
       "items": {
         "type": "number"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Double, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Double]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -1196,15 +1196,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Double, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Double%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1218,7 +1218,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1226,11 +1226,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Double, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Double%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1242,20 +1242,20 @@
       ],
       "minItems": 5
     },
-    "System.Collections.Immutable.ImmutableArray\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "System.Collections.Immutable.ImmutableArray\u00601[System.Decimal]": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/System.Decimal"
+        "$ref": "#/$defs/System.Decimal"
       }
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.Decimal]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -1263,15 +1263,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Decimal%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1285,7 +1285,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1293,11 +1293,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Decimal, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Decimal%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1309,14 +1309,14 @@
       ],
       "minItems": 5
     },
-    "NorthSouthSystems.Rules.AxisMap\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]": {
+    "NorthSouthSystems.Rules.AxisMap\u00601[System.String]": {
       "type": [
         "object",
         "array"
       ],
       "properties": {
         "1": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         "2": {
@@ -1324,15 +1324,15 @@
           "description": "CellValueScaleForFormatting"
         },
         "3": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.String%5D",
           "description": "CellValues"
         },
         "4": {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       },
-      "items": [
+      "prefixItems": [
         {
           "type": [
             "number",
@@ -1346,7 +1346,7 @@
           "description": "This is an undocumented element that is ignored by the deserializer and always serialized as null."
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[NorthSouthSystems.Rules.Axis, NorthSouthSystems.Rules, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BNorthSouthSystems.Rules.Axis%5D",
           "description": "Axes"
         },
         {
@@ -1354,11 +1354,11 @@
           "description": "CellValueScaleForFormatting"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.String%5D",
           "description": "CellValues"
         },
         {
-          "$ref": "#/definitions/System.Collections.Immutable.ImmutableArray\u00601[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+          "$ref": "#/$defs/System.Collections.Immutable.ImmutableArray%601%5BSystem.Boolean%5D",
           "description": "CellIsNullOrWhiteSpaceMask"
         }
       ],
@@ -1371,5 +1371,5 @@
       "minItems": 5
     }
   },
-  "$schema": "http://json-schema.org/draft-04/schema"
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
 }
