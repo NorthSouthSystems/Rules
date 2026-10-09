@@ -22,9 +22,9 @@
       },
       "Nerdbank.MessagePack": {
         "type": "Direct",
-        "requested": "[1.3.86, )",
-        "resolved": "1.3.86",
-        "contentHash": "fHinMOfb+QNV4F4JaEHlpUfVasT+PGZDs3yGCm2FU7MJiu2ky/9fOY9XxSRuf94LBjfWbbGJ1pfKoaNwQFOoMQ==",
+        "requested": "[1.4.82, )",
+        "resolved": "1.4.82",
+        "contentHash": "CuDv5ZW2djyu1NNLIW0OJeCtt2UkMrjtGL7aFvKxCzg+NlV/GQXjMgz9b1aQT0g1e9ca8slzVfA4vwOnlrx6nQ==",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "17.13.22",
           "PolyType": "1.4.1"
@@ -32,11 +32,11 @@
       },
       "NorthSouthSystems.MessagePackable": {
         "type": "Direct",
-        "requested": "[1.1.14-beta, )",
-        "resolved": "1.1.14-beta",
-        "contentHash": "CXGXGe3Rhi+Qck3nZO5U1tbW/4oyZI4CjJmvOg9RtSrx3AI325o9IMwuX2LmwRhWZH/D2eyKPA0YHXTRzyaQ3Q==",
+        "requested": "[1.1.21-beta, )",
+        "resolved": "1.1.21-beta",
+        "contentHash": "mzNSmIrQA2LEk9xDulCqEL7+im4wcjNY88vm4RReRR89EmqjCew+65E7DW++WHqWSgs11SyMqe0McimO/lQCCQ==",
         "dependencies": {
-          "Nerdbank.MessagePack": "1.3.86",
+          "Nerdbank.MessagePack": "1.4.82",
           "NorthSouthSystems.Text": "8.0.1",
           "System.IO.Hashing": "10.0.12"
         }
