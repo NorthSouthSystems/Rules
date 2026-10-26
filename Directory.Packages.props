@@ -15,6 +15,7 @@
         <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.1.21-beta" />
         <!-- NorthSouthSystems.Opinions.BCL: Run the T4 template to update! -->
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1" />
+        <PackageVersion Include="NuGet.Protocol" Version="7.9.0" />
         <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
         <PackageVersion Include="System.Linq.Dynamic.Core" Version="1.7.4" />
         <!-- Verify 33+ uses SponsorCheck to "enforce" the "Open Source Maintenance Fee". There are exceptions for -->
