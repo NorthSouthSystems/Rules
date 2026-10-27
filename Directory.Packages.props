@@ -2,6 +2,8 @@
     <PropertyGroup>
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <DotNetVersion>10.0.14</DotNetVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -37,5 +39,9 @@
 
         <!-- Nerdbank.MessagePack -->
         <PackageVersion Include="PolyType" Version="1.4.1" />
+
+        <!-- NuGet.Protocol -->
+        <!-- 8.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx -->
+        <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="$(DotNetVersion)" />
     </ItemGroup>
 </Project>
