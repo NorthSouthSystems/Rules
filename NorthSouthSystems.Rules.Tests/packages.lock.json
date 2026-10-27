@@ -262,7 +262,7 @@
       "northsouthsystems.rules": {
         "type": "Project",
         "dependencies": {
-          "Nerdbank.MessagePack": "[1.4.82, )",
+          "Nerdbank.MessagePack": "[1.4.95, )",
           "NorthSouthSystems.MessagePackable": "[1.1.21-beta, )",
           "NorthSouthSystems.Text": "[8.0.1, )",
           "System.Linq.Dynamic.Core": "[1.7.4, )",
@@ -300,9 +300,9 @@
       },
       "Nerdbank.MessagePack": {
         "type": "CentralTransitive",
-        "requested": "[1.4.82, )",
-        "resolved": "1.4.82",
-        "contentHash": "CuDv5ZW2djyu1NNLIW0OJeCtt2UkMrjtGL7aFvKxCzg+NlV/GQXjMgz9b1aQT0g1e9ca8slzVfA4vwOnlrx6nQ==",
+        "requested": "[1.4.95, )",
+        "resolved": "1.4.95",
+        "contentHash": "dqVGEi8Q6Xrw0RmVpwoUxc0HutcZwdnPEPgY45e0ImZkSVY7XLDaMz1kz1K4XQUK+tlmqHRCUBfBE8eIc/pH1w==",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "17.13.22",
           "PolyType": "1.4.1"

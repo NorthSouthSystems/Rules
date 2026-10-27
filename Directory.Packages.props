@@ -10,10 +10,10 @@
         <PackageVersion Include="AwesomeAssertions" Version="9.6.0" />
         <PackageVersion Include="ClosedXML" Version="0.105.1" />
         <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
-        <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23" />
+        <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.12.1" />
         <PackageVersion Include="morelinq" Version="4.4.0" />
         <PackageVersion Include="Nerdbank.GitVersioning" Version="3.10.94" />
-        <PackageVersion Include="Nerdbank.MessagePack" Version="1.4.82" />
+        <PackageVersion Include="Nerdbank.MessagePack" Version="1.4.95" />
         <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.1.21-beta" />
         <!-- NorthSouthSystems.Opinions.BCL: Run the T4 template to update! -->
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1" />
