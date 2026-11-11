@@ -32,13 +32,13 @@
       },
       "NorthSouthSystems.MessagePackable": {
         "type": "Direct",
-        "requested": "[1.1.21-beta, )",
-        "resolved": "1.1.21-beta",
-        "contentHash": "mzNSmIrQA2LEk9xDulCqEL7+im4wcjNY88vm4RReRR89EmqjCew+65E7DW++WHqWSgs11SyMqe0McimO/lQCCQ==",
+        "requested": "[1.1.33-beta, )",
+        "resolved": "1.1.33-beta",
+        "contentHash": "WeXaLJxdYp0unj9fz0u0ONGCsXkFOBJwjqahN0A9Ra1hhnL5mk4G4aei7U1dk5q9vvSYcTsZklhVfFcmfPRDIA==",
         "dependencies": {
-          "Nerdbank.MessagePack": "1.4.82",
+          "Nerdbank.MessagePack": "1.4.95",
           "NorthSouthSystems.Text": "8.0.1",
-          "System.IO.Hashing": "10.0.12"
+          "System.IO.Hashing": "11.0.0"
         }
       },
       "NorthSouthSystems.Text": {
@@ -60,8 +60,8 @@
       },
       "System.IO.Hashing": {
         "type": "Transitive",
-        "resolved": "10.0.12",
-        "contentHash": "jDix4bBMYnpZdSPcnY+KDV6ik3SRMzpMKby/bZl/XUwIiflwRNAFZ0oOl61R/pSaveIJ8t1gs2BUlrGsPs/bcg=="
+        "resolved": "11.0.0",
+        "contentHash": "U+Bv2qCYt6eONi+arSP0QIp4uTO6os6uceBsqiAwruZ+Wo2HrRhO/0tj38M9URJtS+4DhAtT3ka2TGNFYsnhyQ=="
       },
       "PolyType": {
         "type": "CentralTransitive",
