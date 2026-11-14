@@ -2,6 +2,7 @@
 
     <ItemGroup>
         <PackageReference Include="morelinq"/>
+        <!-- DO NOT REFERENCE NorthSouthSystems.Opinions.BCL; See scripts/VendorOpinionsBCL instead. -->
         <PackageReference Include="Verify.XunitV3"/>
     </ItemGroup>
 

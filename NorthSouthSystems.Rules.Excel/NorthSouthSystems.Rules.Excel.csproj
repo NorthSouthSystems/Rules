@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="ClosedXML"/>
+        <!-- DO NOT REFERENCE NorthSouthSystems.Opinions.BCL; See scripts/VendorOpinionsBCL instead. -->
     </ItemGroup>
 
     <ItemGroup>

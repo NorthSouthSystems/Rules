@@ -15,7 +15,7 @@
         <PackageVersion Include="Nerdbank.GitVersioning" Version="3.10.94" />
         <PackageVersion Include="Nerdbank.MessagePack" Version="1.4.95" />
         <PackageVersion Include="NorthSouthSystems.MessagePackable" Version="1.1.33-beta" />
-        <!-- NorthSouthSystems.Opinions.BCL: Run the T4 template to update! -->
+        <PackageVersion Include="NorthSouthSystems.Opinions.BCL" Version="12.0.82-beta" />
         <PackageVersion Include="NorthSouthSystems.Text" Version="8.0.1" />
         <PackageVersion Include="NuGet.Protocol" Version="7.9.0" />
         <!-- This is NOT a Microsoft package; it is from ZZZ Projects. -->
